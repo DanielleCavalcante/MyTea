@@ -1,103 +1,128 @@
+
+/* Estilos globais */
+
+body {
+    /* Variáveis de paleta de cores */
+    --primaria-escura: #DD761C;
+    --primaria: #FEB941;
+    --primaria-clara: #FDE49E;
+    --secundaria: #6DC5D1;
+    --branco-padrao: #ffffff;
+    --preto-padrao: #0A0708;
+}
+
+p{
+    margin: 0;
+}
+
+/* Estilos globais de botões */
+.botao-padrao {
+    background-color: var(--primaria);
+    color: var(--branco-padrao);
+    font-weight: 600;
+}
+
+    .botao-padrao:hover {
+        background-color: var(--primaria-escura);
+        color: var(--branco-padrao);
+    }
+
+/* Estilos globais para os formulários */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem var(--primaria-clara);
+    border: 1px solid var(--primaria-clara);
+}
+
+.labels {
+    font-size: 14px;
+    font-weight: 500;
+    color: #747474;
+}
+
+.conteudo-input {
+    font-size: 12px;
+    border-radius: 20px;
+    height: 40px;    
 }
 
 
 
-h1, h4, h5 {
-    font-weight: 800;
-}
+/* View de Login */
+/* Seção de formulário de login */
 
-
-
-.card{
-    width: 25rem;
-    height: 30rem;
-    margin-top: 5rem;
-    padding: 1rem 2rem;
-}
-
-
-
-.logo {
-    width: 20px;
-}
-
-
-
-.nome-marca {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    color: #DD761C;
-    margin-top: 5px;
-}
-
-/*
-.container-fluid {
-    height: 100vh;
-    overflow-y: hidden;
-    padding-bottom: 20px;
-}
-    */
-
-
-
-.conteudo-login {
+#conteudo-form-login {
     background-color: #D5FAFF;
     flex-direction: column;
-    padding-bottom: 100px;
+    padding-bottom: 20px;
 }
 
-.conteudo-imagens {
-    background-color: rgba(109,197,209,0.7);
-    flex-direction: column;
-    color: white;
+#formulario-login {
+    width: 25rem;
+    height: 30rem;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+}
+
+#logo-form-login {
+    width: 60px;
+}
+
+#marca-preta {
     font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: var(--preto-padrao);
+    font-size: 28px;
+    margin-left: 10px;   
 }
 
-.card-title{
+#marca-laranja {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: var(--primaria);
+    font-size: 28px;
+}
+
+#titulo-form-login {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-.imagem-login {
-    max-width: 350px;
-}
-
-.login-labels{
-    font-size:14px;
-    font-weight: 500;
-}
-
-.labels {
-    margin: 20px 0px 30px 0px;
-}
-.relaxe{
-    color: white;
-    margin: 10px 0px 20px 0px;
-    padding: 50px 0px 0px 80px;
-    font-weight: 900;
-}
-
-.login-form{
-    margin-left: 20px;
-}
-
-.animacao {
-    width: 100px;
-}
-
-.botao-padrao {
-    background-color: #DD761C;
-    color: white;
-    font-weight: 600;
+#botao-login {
     margin-top: 40px;
 }
 
-.col-3{
-    margin: 0;
-    padding: 0;
+/* View de Login */
+/* Seção de imagem e animação */
+
+#conteudo-imagens-login {
+    background-color: rgba(109,197,209,0.7);
+    flex-direction: column;
+    color: var(--branco-padrao);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    padding-bottom: 20px;
 }
+
+#relaxe {
+    color: var(--branco-padrao);   
+    padding: 65px 0px 0px 80px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#animacao {
+    width: 100px;
+}
+
+#declare{
+    font-size: 20px;
+}
+
+#imagem-login {
+    max-width: 350px;
+}
+
 
     

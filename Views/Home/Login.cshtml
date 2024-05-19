@@ -6,57 +6,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body class="container-fluid">
+
+<div class="container-fluid">
     <div class="row">
-        <div class="col-6 conteudo-login d-flex align-items-center">
-            <div class="card">
+        <section id="conteudo-form-login" class="col-6 d-flex align-items-center">
+            <div id=formulario-login class ="card">
                 <div class="card-body">
-                    <div class="row d-flex justify-content-center mb-5 mt-5 marca">
-                        <div class="col-3 logo mr-3">
-                            <img src="~/img/cup.svg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="nome-marca col-4">
-                            MyTea
-                        </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center mt-4 mb-4">
+                            <img src="~/img/xicara.svg" id="logo-form-login" class="ml-3 card-img-top" alt="...">
+                            <span id="marca-preta" class="align-middle">
+                                My<span id="marca-laranja">Tea</span>
+                            </span>
+                        </div>                        
                     </div>
                     <div class="form">
-                        <h6 class="card-title">Faça o seu login</h6>
+                        <p id="titulo-form-login" class="card-title mb-4 mt-3 text-center">Faça o seu login</p>
 
-                        <label class="login-labels">Informe o seu e-mail</label>
+                        <label class="labels mb-2">E-mail</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Exemplo: email@email.com" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control conteudo-input" placeholder="Exemplo: email@email.com" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
-                        <label class="login-labels">Informe a sua senha</label>
+                        <label class="labels mb-2">Senha</label>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Exemplo: Admin123@m" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="password" class="form-control conteudo-input" placeholder="Exemplo: Admin123@m" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-center botao-login">
+                    <div id="botao-login" class="d-flex justify-content-center">
                         <button class="btn botao-padrao">Enviar</button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-6 conteudo-imagens d-flex align-items-center">
+        </section>
+        <section id="conteudo-imagens-login" class="col-6 d-flex align-items-center">
             <div class="row">
                 <div class="col-7 relaxe">
-                    <h1>Relaxe... </h1>
+                    <p id="relaxe">Relaxe... </p>
                 </div>
                 <div class="col-5">
-                    <iframe class="animacao " src="https://lottie.host/embed/a713a27f-e373-4876-a53c-724de144a8f8/a8fu06TZxX.json"></iframe>
+                    <iframe id="animacao" src="https://lottie.host/embed/a713a27f-e373-4876-a53c-724de144a8f8/a8fu06TZxX.json"></iframe>
                 </div>
             </div>
-            <div class="mb-5">
-                <h4>Declare as suas horas.</h4>
-                <h5>A gente cuida do restante.</h5>
+            <div class="mb-3">
+                <p id="declare">Declare as suas horas.</p>
+                <p>A gente cuida do restante.</p>
             </div>
             <div class="row">
-                <div class="col-12 d-flex imagem-login">
-                    <img src="~/img/imagem_login.svg" class="card-img-top align-self-center" alt="...">
+                <div id="imagem-login">
+                    <img src="~/img/imagem_login.svg" class="card-img-top align-self-center" alt="Fotografia de uma mulher sorrindo, sentada, apoiando os braços em uma mesa. Ela segura uma xícara enquanto olha para um notebook posicionado em sua frente, e em cima da mesa">
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</body>
+</div>
+   

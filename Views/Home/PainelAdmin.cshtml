@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Painel Admin";
+}
+
+<div class="container-fluid">
+    <nav>
+        <div class="nav nav-tabs nav-justified" role="tablist">
+            <button class="nav-link active" id="nav-departamentos-tab" data-bs-toggle="tab" data-bs-target="#nav-departamentos" role="tab">
+                Departamento
+            </button>
+            <button class="nav-link" id="nav-wbs-tab" data-bs-toggle="tab" data-bs-target="#nav-wbs" role="tab">
+                WBS
+            </button>
+            <button class="nav-link" id="nav-funcionario-tab" data-bs-toggle="tab" data-bs-target="#nav-funcionario" role="tab">
+                Funcionários
+            </button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-departamentos" role="tabpanel">
+            <div class="container my-5 px-0">
+                <div class="row">
+                    <div class="col-md-9 col-12">
+                        <h2 class="my-2">Buscar Departamento</h2>
+                        <p class="mb-4">Busque um departamento por seu nome ou código</p>
+                        <div class="row mt-3">
+                            <div class="input- mb-3 col-4">
+                                <input type="text" class="form-control" placeholder="Informe um nome ou código" aria-label="Username">
+                            </div>
+                            <div class="col-8">
+                                <button type="button" class="btn btn-dark">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-8 d-flex justify-content-end">
+                        <div class="col-8 my-3 ">
+                            <button type="button" class="btn btn-dark">Cadastrar Departamento</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table mt-5">
+                        <thead>
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Departamento</th>
+                                <th scope="col" colspan="2"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Tecnologia</td>
+                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                                    <button type="button" class="btn btn-dark">Editar</button>
+                                    <button type="button" class="btn btn-dark">Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Recursos Humanos</td>
+                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                                    <button type="button" class="btn btn-dark">Editar</button>
+                                    <button type="button" class="btn btn-dark">Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Contabilidade</td>
+                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                                    <button type="button" class="btn btn-dark">Editar</button>
+                                    <button type="button" class="btn btn-dark">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show" id="nav-wbs" role="tabpanel">
+            <div class="my-5 px-0">
+                <h2>Buscar WBS</h2>
+            </div>
+        </div>
+        <div class="tab-pane fade show" id="nav-funcionario" role="tabpanel">
+            <div class="my-5 px-0">
+                <h2>Buscar Funcionário</h2>
+            </div>
+        </div>
+    </div>
+</div>

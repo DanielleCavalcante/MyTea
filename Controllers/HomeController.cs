@@ -18,7 +18,12 @@ namespace MyTea.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult PainelAdmin()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
         {
             return View();
         }

@@ -54,6 +54,7 @@ p{
     background-color: #D5FAFF;
     flex-direction: column;
     padding-bottom: 20px;
+    height: 100vh;
 }
 
 #formulario-login {
@@ -124,5 +125,3 @@ p{
     max-width: 350px;
 }
 
-
-    

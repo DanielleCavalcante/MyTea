@@ -3,12 +3,20 @@
 
 body {
     /* Variáveis de paleta de cores */
-    --primaria-escura: #DD761C;
-    --primaria: #FEB941;
+    --primaria-escura: #c26716;
+    --primaria: #DD761C;
     --primaria-clara: #FDE49E;
     --secundaria: #6DC5D1;
-    --branco-padrao: #ffffff;
+    --branco-padrao: #F3F5F9;
     --preto-padrao: #0A0708;
+    --vermelho-padrao: #C85250;
+    --vermelho-escuro: #a84543;
+    --vermelho-claro: #f3625f;
+    --cinza-claro: #0000000d;
+    --cinza: #747474;
+    --cinza-escuro: #575454;
+
+    background-color: var(--branco-padrao);
 }
 
 p{
@@ -16,6 +24,8 @@ p{
 }
 
 /* Estilos globais de botões */
+
+/* Botão rincipal */
 .botao-padrao {
     background-color: var(--primaria);
     color: var(--branco-padrao);
@@ -27,8 +37,66 @@ p{
         color: var(--branco-padrao);
     }
 
+    .botao-padrao:active:focus {
+        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
+        border: 1px solid var(--primaria-clara);
+    }
+
+
+    .botao-padrao:focus {
+        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
+        border: 1px solid var(--primaria-clara);
+    }
+
+/* Botão Excluir */
+.botao-excluir {
+    background-color: var(--vermelho-padrao);
+    color: var(--branco-padrao);
+    font-weight: 600;
+}
+
+    .botao-excluir:hover {
+        background-color: var(--vermelho-escuro);
+        color: var(--branco-padrao);
+        font-weight: 600;
+    }
+
+    .botao-excluir:active:focus {
+        box-shadow: 0 0 0 0.1rem var(--vermelho-claro);
+        border: 1px solid var(--vermelho-claro);
+    }
+
+    .botao-excluir:focus {
+        box-shadow: 0 0 0 0.1rem var(--vermelho-claro);
+        border: 1px solid var(--vermelho-claro);
+    }
+
+
+/* Botão Cancelar */
+.botao-cancelar {
+    background-color: var(--cinza);
+    color: var(--branco-padrao);
+    font-weight: 600;
+}
+
+    .botao-cancelar:hover {
+        background-color: var(--cinza-escuro);
+        color: var(--branco-padrao);
+        font-weight: 600;
+    }
+
+    .botao-cancelar:focus {
+        box-shadow: 0 0 0 0.1rem var(--cinza);
+        border: 1px solid var(--cinza);
+    }
+
+    .botao-cancelar:active:focus {
+        box-shadow: 0 0 0 0.1rem var(--cinza);
+        border: 1px solid var(--cinza);
+    }
+
 /* Estilos globais para os formulários */
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem var(--primaria-clara);
     border: 1px solid var(--primaria-clara);
 }
@@ -36,7 +104,7 @@ p{
 .labels {
     font-size: 14px;
     font-weight: 500;
-    color: #747474;
+    color: var(--cinza);
 }
 
 .conteudo-input {
@@ -45,11 +113,16 @@ p{
     height: 40px;    
 }
 
+/* Estilos globais para as tabelas */
+
+thead {
+    background-color: var(--preto-padrao);
+    color: var(--branco-padrao);
+}
 
 
 /* View de Login */
 /* Seção de formulário de login */
-
 #conteudo-form-login {
     background-color: #D5FAFF;
     flex-direction: column;
@@ -125,3 +198,33 @@ p{
     max-width: 350px;
 }
 
+/* View de Painel Admin */
+
+.aba-navegacao {
+    color: var(--preto-padrao);    
+}
+
+.nav-tabs {
+    border-bottom: 1px solid var(--cinza-claro);    
+}
+
+.nav-tabs :hover{
+    background-color: var(--primaria-escura);
+    color: var(--branco-padrao);
+    font-weight: 600; 
+}
+
+
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: var(--branco-padrao);
+        font-weight: 600; 
+        background-color: var(--primaria);
+        border-bottom: 1px solid var(--primaria-clara);
+        
+    }
+
+/* Painel Admin - Cadastrar Funcionário */
+
+.modal-cadastrar-func {
+    padding: 0 20px 0 20px;
+}

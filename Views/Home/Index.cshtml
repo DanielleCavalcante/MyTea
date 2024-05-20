@@ -4,4 +4,193 @@
 
 <h1>@ViewData["Home"]</h1>
 
-<p>Está é a página inicial - lançamento de horas.</p>
+<div class="container">
+    
+    <h3 class="mt-5">Olá, Maria.</h3>
+    
+    <div class="d-flex justify-content-end mt-5">
+        <button class="btn navegacao-calendario"><</button>
+        <input class="d-flex text-center" type="text" placeholder="01/05/24 - 15/05/24" />
+        <button class="btn navegacao-calendario">></button>
+    </div>
+
+
+    <div class="table-responsive" id="tabela-home">
+        <table class="table mt-5">
+            <thead id="cabecalho-tabela-home">
+                <tr>
+                    <th scope="col" colspan="4">WBS</th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Qua</p>
+                        <p class="m-0 text-center">1</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Qui</p>
+                        <p class="m-0 text-center">2</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Sex</p>
+                        <p class="m-0 text-center">3</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Sab</p>
+                        <p class="m-0 text-center">4</p>
+                    </th>        
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Dom</p>
+                        <p class="m-0 text-center">5</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Seg</p>
+                        <p class="m-0 text-center">6</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Ter</p>
+                        <p class="m-0 text-center">7</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Qua</p>
+                        <p class="m-0 text-center">8</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Qui</p>
+                        <p class="m-0 text-center">9</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Sex</p>
+                        <p class="m-0 text-center">10</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Sab</p>
+                        <p class="m-0 text-center">11</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Dom</p>
+                        <p class="m-0 text-center">12</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Seg</p>
+                        <p class="m-0 text-center">13</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Ter</p>
+                        <p class="m-0 text-center">14</p>
+                    </th>
+                    <th scope="col d-flex justify-content-center">
+                        <p class="m-0 text-center">Qua</p>
+                        <p class="m-0 text-center">15</p>
+                    </th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" colspan="4">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="seletor-wbs">WBS0911009 - Implementação e desenvolvimento</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">WBS0911008 - Férias</a></li>
+                                <li><a class="dropdown-item" href="#">WBS0911007 - Day-Off</a></li>
+                                <li><a class="dropdown-item" href="#">WBS0911006 - Sem Tarefa</a></li>
+                            </ul>
+                        </div>
+                    </th>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"> <input type="text" class="form-control input-horas"</td>
+                    <td class="m-0 text-center"></td>
+                </tr>
+                <tr>
+                    <th scope="row" colspan="4">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="seletor-wbs">WBS0911009 - Férias</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">WBS0911008 - Férias</a></li>
+                                <li><a class="dropdown-item" href="#">WBS0911007 - Day-Off</a></li>
+                                <li><a class="dropdown-item" href="#">WBS0911006 - Sem Tarefa</a></li>
+                            </ul>
+                        </div>
+                    </th>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center"></td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center"></td>
+                </tr>                
+                <tr>
+                    <th scope="row" colspan="4">
+                        Total de horas
+                    </th>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                 </tr>
+                <tr>
+                    <th scope="row" colspan="4">
+                        Escala de trabalho
+                    </th>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                    <td class="m-0 text-center">8</td>
+                </tr>
+            </tbody>                      
+        </table>
+    </div>
+</div>
+
+
+
+

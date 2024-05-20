@@ -198,10 +198,49 @@ thead {
     max-width: 350px;
 }
 
-/* View de Painel Admin */
 
+/* View Home */
+
+#tabela-home {
+    font-size: 12px;
+}
+
+.navegacao-calendario {
+    margin: 0px 10px 0px 10px;
+    cursor:pointer;
+    color: var(--primaria);
+    font-weight: 900;
+}
+
+    .navegacao-calendario:focus {
+        border: 1px solid var(--primaria);
+        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
+        background-color: white;
+    }
+
+    .navegacao-calendario:active:focus {
+        border: 1px solid var(--primaria);
+        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
+    }
+
+.seletor-wbs {
+    font-size: 12px;
+}
+
+.input-horas {
+    font-size: 12px;
+    width: 35px;
+    background-color: transparent;
+    border: none;
+}
+
+#cabecalho-tabela-home {
+    background-color: var(--primaria);
+}
+
+/* View de Painel Admin */
 .aba-navegacao {
-    color: var(--preto-padrao);    
+    color: var(--preto-padrao);
 }
 
 .nav-tabs {

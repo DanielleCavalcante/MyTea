@@ -23,6 +23,41 @@ p{
     margin: 0;
 }
 
+/* Estilo navbar */
+
+
+.botao-navbar {
+    color: var(--primaria);
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+    .botao-navbar:hover {
+        cursor: pointer;
+        color: var(--primaria-escura);
+    }
+
+#logo{
+    width: 25px;
+}
+
+#marca-preta-nav {
+    color: var(--preto-padrao);
+    margin-left: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+#marca-laranja-nav {
+    font-size: 15px;
+    color: var(--primaria);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    cursor:pointer;
+}
+
+
 /* Estilos globais de botões */
 
 /* Botão rincipal */
@@ -138,16 +173,12 @@ thead {
     border-radius: 20px;
 }
 
-#logo-form-login {
-    width: 60px;
-}
-
 #marca-preta {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     color: var(--preto-padrao);
     font-size: 28px;
-    margin-left: 10px;   
+    margin-left: 10px;
 }
 
 #marca-laranja {
@@ -155,6 +186,10 @@ thead {
     font-weight: 700;
     color: var(--primaria);
     font-size: 28px;
+}
+
+#logo-form-login {
+    width: 60px;
 }
 
 #titulo-form-login {

@@ -1,11 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Login";
 }
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
 
 <div class="container-fluid">
     <div class="row">
@@ -34,9 +29,12 @@
                         </div>
                     </div>
 
-                    <div id="botao-login" class="d-flex justify-content-center">
-                        <button class="btn botao-padrao">Enviar</button>
-                    </div>
+                    <form  asp-action="Index">
+                        <div id="botao-login" class="d-flex justify-content-center">
+                            <button class="btn botao-padrao">Enviar</button>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </section>

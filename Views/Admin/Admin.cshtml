@@ -15,7 +15,7 @@
                 </button>
                 <button class="aba-navegacao nav-link" id="nav-wbs-tab" data-bs-toggle="tab" data-bs-target="#nav-wbs" role="tab">
                     WBS
-                </button>
+                </button>                            
                 <button class="aba-navegacao nav-link" id="nav-funcionario-tab" data-bs-toggle="tab" data-bs-target="#nav-funcionario" role="tab">
                     Funcionários
                 </button>
@@ -23,9 +23,11 @@
         </nav>
     </section> 
 
-    @* Visualização das funcionalidades de Departamento *@
+    
 
     <div class="tab-content" id="nav-tabContent">
+
+        @* Visualização das funcionalidades de Departamento *@
         <div class="tab-pane fade show active" id="nav-departamentos" role="tabpanel">
             <div class="container my-5 px-0">
                 <div class="row">
@@ -186,15 +188,157 @@
         @* Visualização das funcionalidades de WBS *@
 
         <div class="tab-pane fade show" id="nav-wbs" role="tabpanel">
-            <div class="my-5 px-0">
-                <h2>Buscar WBS</h2>
+            <div class="container my-5 px-0">
+                <div class="row">
+                    <div class="col-md-9 col-12">
+                        <h3 class="my-2">Buscar WBS</h3>
+                        <p class="mb-4">Busque uma WBS por seu nome ou código</p>
+                        <div class="row mt-3">
+                            <div class="input mb-3 col-4">
+                                <input type="text" class="form-control conteudo-input" placeholder="Informe um nome ou código">
+                            </div>
+                            <div class="col-8">
+                                <button type="button" class="btn botao-padrao">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-8 d-flex justify-content-end">
+                        <div class="col-8 my-3 ">
+                            <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-cadastrar-wbs">Cadastrar WBS</button>
+                        </div>
+                    </div>
+                </div>
 
-                @* Importante implementar validações para a criação das WBS *@
-               
+                @* Tabela para exibir dados da WBS *@
 
+                <p class="mt-5 mb-2">Lista de WBS cadastradas:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="cabeçalho-tabela">
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">WBS</th>                              
+                                <th scope="col" colspan="2"></th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>A3019201</td>
+                                <td>Treinamento</td>                             
+                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-wbs">Editar</button>
+                                    <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-wbs">Excluir</button>
+                                </td>
+                            </tr>                          
+                        </tbody>
+                    </table>
+                </div>
+
+                
+                @*
+                FUNÇÃO CADASTRAR
+                Modal de exibição após pressionar o botão cadastrar nova WBS
+                *@
+
+                <div class="modal fade" id="botao-cadastrar-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header mb-3">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Wbs</h1>
+                            </div>
+                            <div class="modal-body modal-cadastrar-func">
+                                <label class="labels mb-2">Descrição</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
+                                </div>
+                            </div>
+                            <div class="modal-body modal-cadastrar-func">
+                                <label class="labels mb-2">Chargeability</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Sim">
+                                </div>
+                            </div>                            <
+                            <div class="modal-footer">
+                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*
+                FUNÇÃO EDITAR
+                Modal de exibição após pressionar botão editar wbs
+                *@
+
+                <div class="modal fade" id="botao-editar-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header mb-3">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar WBS</h1>
+                            </div>
+                            <div class="modal-body modal-cadastrar-func">
+                                <label class="labels mb-2">Descrição</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
+                                </div>
+                            </div>
+                            <div class="modal-body modal-cadastrar-func">
+                                <label class="labels mb-2">Chargeability</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Sim">
+                                </div>
+                            </div>                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*
+
+                FUNÇÃO EXCLUIR
+                Modal de exibição após pressionar o botão excluir WBS *@
+
+                <div class="modal fade" id="botao-excluir-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir WBS</h1>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger" role="alert">
+                                    Atenção!
+                                    <p>Você deseja realmente excluir esta wbs?</p>
+                                </div>
+                                <table class="table mt-5 table-striped ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Descrição</th>
+                                            <th scope="col">Chargeability</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">A301929</th>
+                                            <td>Treinamento</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
 
         @* Visualização das funcionalidades de Funcionário *@
 
@@ -480,5 +624,5 @@
                 </div>
             </div>
          </div>
-    <div>
+    </div>
 </div>

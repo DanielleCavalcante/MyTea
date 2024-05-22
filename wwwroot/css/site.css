@@ -236,13 +236,16 @@ thead {
 
 /* View Home */
 
-#tabela-home {
-    font-size: 12px;
+
+#saudacao-usuario {
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
 }
 
 .navegacao-calendario {
     margin: 0px 10px 0px 10px;
-    cursor:pointer;
+    cursor: pointer;
     color: var(--primaria);
     font-weight: 900;
 }
@@ -258,8 +261,21 @@ thead {
         box-shadow: 0 0 0 0.1rem var(--primaria-clara);
     }
 
-.seletor-wbs {
+
+#tabela-home {
     font-size: 12px;
+}
+
+#cabecalho-tabela-home {
+    background-color: var(--primaria-escura);
+}
+
+.seletor-wbs {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: var(--primaria);
+    cursor:pointer;
 }
 
 .input-horas {
@@ -269,9 +285,6 @@ thead {
     border: none;
 }
 
-#cabecalho-tabela-home {
-    background-color: var(--primaria);
-}
 
 /* View de Painel Admin */
 .aba-navegacao {

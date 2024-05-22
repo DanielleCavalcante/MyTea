@@ -6,7 +6,7 @@
 
 <div class="container">
     
-    <h3 class="mt-5">Olá, Maria.</h3>
+    <p class="mt-5" id="saudacao-usuario">Olá, Maria.</p>
     
     <div class="d-flex justify-content-end mt-5">
         <button class="btn navegacao-calendario"><</button>
@@ -16,7 +16,7 @@
 
 
     <div class="table-responsive" id="tabela-home">
-        <table class="table mt-5">
+        <table class="table table-hover mt-5">
             <thead id="cabecalho-tabela-home">
                 <tr>
                     <th scope="col" colspan="4">WBS</th>
@@ -85,17 +85,15 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row" colspan="4">
-                        <div class="dropdown">
-                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="seletor-wbs">WBS0911009 - Implementação e desenvolvimento</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">WBS0911008 - Férias</a></li>
-                                <li><a class="dropdown-item" href="#">WBS0911007 - Day-Off</a></li>
-                                <li><a class="dropdown-item" href="#">WBS0911006 - Sem Tarefa</a></li>
-                            </ul>
-                        </div>
+                    <th scope="row" colspan="4" class="linha-seletor">
+                        <p>
+                            <select class="seletor-wbs">
+                                <option value="WBS0911009">WBS0911009 - Férias</option>
+                                <option value="WBS0911008">WBS0911008 - Day-off</option>
+                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
+                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                            </select>
+                        </p>
                     </th>
                     <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
                     <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
@@ -116,16 +114,15 @@
                 </tr>
                 <tr>
                     <th scope="row" colspan="4">
-                        <div class="dropdown">
-                            <button class="btn btn-light dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="seletor-wbs">WBS0911009 - Férias</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">WBS0911008 - Férias</a></li>
-                                <li><a class="dropdown-item" href="#">WBS0911007 - Day-Off</a></li>
-                                <li><a class="dropdown-item" href="#">WBS0911006 - Sem Tarefa</a></li>
-                            </ul>
-                        </div>
+                        <p>
+                            <select class="seletor-wbs">
+                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                <option value="WBS0911009">WBS0911009 - Férias</option>
+                                <option value="WBS0911008">WBS0911008 - Day-off</option>
+                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
+                                
+                            </select>
+                        </p>
                     </th>
                     <td class="m-0 text-center"></td>
                     <td class="m-0 text-center"></td>

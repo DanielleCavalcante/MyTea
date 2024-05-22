@@ -15,10 +15,30 @@ namespace MyTea.Controllers
 
         public IActionResult Index()
         {
+            return View(Repository.TodasAsQuinzenas);
+        }
+
+        public IActionResult Create()
+        {
             return View();
         }
 
-        
+        [HttpPost]
+
+        public IActionResult Create(Quinzenas registroQuinzena)
+        {
+            if(ModelState.IsValid)
+            {
+                Repository.Inserir(registroQuinzena);
+                return View("Agradecimentos", registroQuinzena);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

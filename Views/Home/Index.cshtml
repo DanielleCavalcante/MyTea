@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Quinzenas> 
+
+@{
     ViewData["Title"] = "Tela Inicial";
 }
 
@@ -7,17 +9,28 @@
 <div class="container">
     
     <p class="mt-5" id="saudacao-usuario">Olá, Maria.</p>
-    
+   
     <div class="d-flex justify-content-end mt-5">
         <button class="btn navegacao-calendario"><</button>
-        <select id="calendario">
-            <option value="01/04/24">01/04/24</option>
-            <option value="16/04/24">16/04/24</option>
-            <option value="01/05/24">01/05/24</option>
-            <option value="16/05/24">16/05/24</option>
-        </select>
+
+        
+            <select id="calendario">
+                
+                @foreach (Quinzenas registro in Model)
+                {
+                    <option value=>@registro.Quinzena</option>
+                }
+
+            </select>
+        
         <button class="btn navegacao-calendario">></button>
+       
     </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
 
 
     <div class="table-responsive" id="tabela-home">

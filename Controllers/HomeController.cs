@@ -18,16 +18,7 @@ namespace MyTea.Controllers
             return View();
         }
 
-        public IActionResult PainelAdmin()
-        {
-            return View();
-        }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

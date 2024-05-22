@@ -236,6 +236,18 @@ thead {
 
 /* View Home */
 
+#calendario {
+    cursor: pointer;
+    color: var(--primaria);
+    font-weight: 600;
+    padding: 0px 20px 0px 5px;    
+    border-radius: 5px;
+    border: 2px solid var(--cinza-claro);
+}
+
+#calendario:focus {
+    border: 2px solid var(--primaria-clara);
+}
 
 #saudacao-usuario {
     font-size: 24px;

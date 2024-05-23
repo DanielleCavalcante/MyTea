@@ -4,6 +4,7 @@
     {
         public bool Feriado { get; set; }
 
+        public bool DeveMostrarDiv { get; set; }
         public bool LinhaAdicionalTabela { get; set; }
         public int TotalHorasQuinzEsperada { get; set; }
 

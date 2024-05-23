@@ -1,7 +1,13 @@
-﻿@model Horas
+﻿@using (Html.BeginForm("Calcular", "Home", FormMethod.Post))
+{
+    <input type="text" name="valor1" />
+    <input type="text" name="valor2" />
+    <input type="submit" value="Enviar" />
+}
 
-
-<div class="table-responsive" id="tabela-home">
+@*
+    @model Horas
+    <div class="table-responsive" id="tabela-home">
     <table class="table table-hover mt-5">
         <thead id="cabecalho-tabela-home">
             <tr>
@@ -100,7 +106,7 @@
                 <td class="m-0 text-center">88</td>
             </tr>
             <tr>
-                @*
+                
             <tr>
                 <th scope="row" colspan="4">
                     Total de horas
@@ -122,28 +128,31 @@
                 <td class="m-0 text-center">8</td>
                 <td class="m-0 text-center">88</td>
             </tr>
-                *@
-            <tr>
-                <th scope="row" colspan="4">
-                    Escala de trabalho
-                </th>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center"></td>
-                <td class="m-0 text-center"></td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center"></td>
-                <td class="m-0 text-center"></td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">8</td>
-                <td class="m-0 text-center">88</td>
-            </tr>
+                
+<tr>
+    <th scope="row" colspan="4">
+        Escala de trabalho
+    </th>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center"></td>
+    <td class="m-0 text-center"></td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center"></td>
+    <td class="m-0 text-center"></td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">8</td>
+    <td class="m-0 text-center">88</td>
+</tr>
         </tbody>
     </table>
 </div>
+
+
+*@

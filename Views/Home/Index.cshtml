@@ -8,7 +8,16 @@
 
 <div class="container">
     
-    <p class="mt-5" id="saudacao-usuario">Olá, Maria.</p>
+
+@if (Model.DeveMostrarDiv)
+{
+    <div>
+            <div class="alert alert-danger" role="alert">
+                A simple danger alert—check it out!
+            </div>
+    </div>
+}
+
    
     <div class="d-flex justify-content-end mt-5">
         <button class="btn navegacao-calendario"><</button>
@@ -38,7 +47,8 @@
     </div>
 
     
-
+    @using (Html.BeginForm("Calcular", "Home", FormMethod.Post))
+    {
     <form method="post">
         <div class="d-flex justify-content-end mt-5">
             <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
@@ -127,11 +137,11 @@
 
 
                         <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="text" class="form-control input-horas" /></td>
-                        <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="text" name="valor1" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="text" name="valor2" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"></td>
                         <td class="m-0 text-center"> </td>
-                        <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="text"  class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input asp-for="Dia_Cinco" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input asp-for="Dia_Seis" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input asp-for="Dia_Sete" type="text" class="form-control input-horas" /></td>
@@ -245,6 +255,7 @@
             </table>
         </div>
     </form>
+    }
 </div>
 
 

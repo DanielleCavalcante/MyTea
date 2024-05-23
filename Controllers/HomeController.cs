@@ -52,9 +52,10 @@ namespace MyTea.Controllers
         }
 
 
-            [HttpPost]
+        [HttpPost]
         public IActionResult Index(Horas registroHoras)
         {
+
             if (ModelState.IsValid)
             {
                 Repository.Inserir(registroHoras);
@@ -70,6 +71,28 @@ namespace MyTea.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Calcular(string valor1, string valor2)
+        {
+            var modelo = new Horas();
+            // Tente converter os valores para double
+            double val1, val2;
+            if (double.TryParse(valor1, out val1) && double.TryParse(valor2, out val2))
+            {
+                // Realize o cálculo
+                double resultado = val1 + val2;
+                // Defina a condição com base no resultado do cálculo
+                modelo.DeveMostrarDiv = resultado < 88;
+            }
+            else
+            {
+                // Se a conversão falhar, defina a condição como false
+                modelo.DeveMostrarDiv = false;
+            }
+            return View("Index", modelo);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

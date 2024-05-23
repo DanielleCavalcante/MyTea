@@ -151,11 +151,11 @@ p{
 /* Estilos globais para as tabelas */
 
 thead {
-    background-color: var(--preto-padrao);
+    background-color: var(--primaria);
     color: var(--branco-padrao);
 }
 
-td { /*alinha verticalmente o texto da linha da tabela*/
+td, tr {
     vertical-align: middle;
 }
 
@@ -272,7 +272,8 @@ td { /*alinha verticalmente o texto da linha da tabela*/
     border: none;
 }
 
-#cabecalho-tabela-home {
+/*cabeçalhos tela do Painel Admin*/
+#cabeçalho-tabela {
     background-color: var(--primaria);
 }
 
@@ -304,4 +305,15 @@ td { /*alinha verticalmente o texto da linha da tabela*/
 
 .modal-cadastrar-func {
     padding: 0 20px 0 20px;
+}
+
+.form-check {
+    margin-right: 20px; /* Espaçamento entre os elementos */
+}
+
+.seletor-funcionario {
+    height: 40px;
+    font-size: 12px;
+    border-radius: 20px;
+    color: var(--cinza);
 }

@@ -155,6 +155,9 @@ thead {
     color: var(--branco-padrao);
 }
 
+td { /*alinha verticalmente o texto da linha da tabela*/
+    vertical-align: middle;
+}
 
 /* View de Login */
 /* Seção de formulário de login */

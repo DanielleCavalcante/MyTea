@@ -13,12 +13,46 @@ namespace MyTea.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        /* 
+         
+           public IActionResult Index()
         {
+            int quantidade = 5; // Exemplo de quantidade
+            decimal precoUnitario = 20.0m; // Exemplo de preço unitário
+            decimal desconto = 0.1m; // 10% de desconto
+            decimal precoTotal;
+
+            if (quantidade > 10)
+            {
+                precoTotal = (quantidade * precoUnitario) * (1 - desconto);
+            }
+            else
+            {
+                precoTotal = quantidade * precoUnitario;
+            }
+
+            ViewBag.PrecoTotal = precoTotal;
+
             return View();
         }
+         
+         */
 
-        [HttpPost]
+        public IActionResult Index()
+        {
+            var feriado = new Horas
+            {
+                Feriado = true, // condicional para criar uma linha na tabela quando existe feriado no mês
+                LinhaAdicionalTabela = true, // condicional para criar uma linha na tabela quando as primeiras cinco linhas já foram usadas
+                               
+            };
+
+            return View(feriado);
+            
+        }
+
+
+            [HttpPost]
         public IActionResult Index(Horas registroHoras)
         {
             if (ModelState.IsValid)
@@ -36,8 +70,7 @@ namespace MyTea.Controllers
         {
             return View();
         }
-        
-      
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

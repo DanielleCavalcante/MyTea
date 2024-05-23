@@ -1,10 +1,4 @@
-﻿@*
-    @model IEnumerable<Quinzenas>
-    @model IEnumerable<Horas>
-*@
-
- @model Horas
-    
+﻿ @model Horas    
 
 @{
     ViewData["Title"] = "Tela Inicial";
@@ -43,7 +37,7 @@
        
     </div>
 
-   
+    
 
     <form method="post">
         <div class="d-flex justify-content-end mt-5">
@@ -149,31 +143,82 @@
                         <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"></td>
                     </tr>
-                    <tr>
-                        
+
+                    @* Condicional para exibição de linha adicional na Tabela *@
+                    @if (Model.LinhaAdicionalTabela)
+                    {
+                        <div>
                         <tr>
-                        <th scope="row" colspan="4">
-                        Feriado 
-                        </th>
-                        <td class="m-0 text-center">8</td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center"></td>
-                        <td class="m-0 text-center">8</td>
+                            <th scope="row" colspan="4" class="linha-seletor">
+                                <p>
+                                    <select class="seletor-wbs">
+                                        <option value="WBS0911009">WBS0911009 - Férias</option>
+                                        <option value="WBS0911008">WBS0911008 - Day-off</option>
+                                        <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
+                                        <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                    </select>
+                                </p>
+                            </th>
+
+
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"> </td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Cinco" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Seis" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Sete" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Oito" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Nove" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"></td>
                         </tr>
+                        </div>
+                    }
+
+                    @* Condicional para exibição de linha de feriado na Tabela *@
+                    @if (Model.Feriado)
+                    {
+                        <div>
+                        <tr>
+                            <th scope="row" colspan="4">
+                                Feriado
+                            </th>
+                            <td class="m-0 text-center">8</td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center">8</td>
+                            </tr>
+                        </div>
+                    }
+                    
+                    @if (Model.CalculoHorasQuinzena < 88)
+                    {
+                        <div>
+                            <p>
+                            Opaaaa,tem algo errado aqui.
+                            </p>
+                        </div>
+                    }
+
                         
-                   
                     <tr>
                         <th scope="row" colspan="4">
                             Escala de trabalho

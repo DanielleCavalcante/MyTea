@@ -15,22 +15,16 @@ namespace MyTea.Controllers
 
         public IActionResult Index()
         {
-            return View(Repository.TodasAsQuinzenas);
-        }
-
-        public IActionResult Create()
-        {
             return View();
         }
 
         [HttpPost]
-
-        public IActionResult Create(Quinzenas registroQuinzena)
+        public IActionResult Index(Horas registroHoras)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Repository.Inserir(registroQuinzena);
-                return View("Agradecimentos", registroQuinzena);
+                Repository.Inserir(registroHoras);
+                return View("_TestePartialView", registroHoras);
             }
             else
             {
@@ -38,7 +32,12 @@ namespace MyTea.Controllers
             }
         }
 
-
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+      
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

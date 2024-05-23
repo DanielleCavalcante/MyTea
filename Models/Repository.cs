@@ -4,16 +4,17 @@ namespace MyTea.Models
 {
     public class Repository
     {
-        private static List<Quinzenas> _todasAsQuinzenas = new List<Quinzenas>();
+      
+        private static List<Horas> _todasAsHoras = new List<Horas>();
 
-        public static IEnumerable<Quinzenas> TodasAsQuinzenas
+        public static IEnumerable<Horas> TodasAsHoras
         {
-            get { return _todasAsQuinzenas; }
+            get { return _todasAsHoras; }
         }
 
-        public static void Inserir(Quinzenas registroQuinzena)
+        public static void Inserir(Horas registroHoras)
         {
-            _todasAsQuinzenas.Add(registroQuinzena);
+            _todasAsHoras.Add(registroHoras);
         }
 
     }

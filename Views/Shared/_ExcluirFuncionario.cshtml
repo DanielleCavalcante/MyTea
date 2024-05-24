@@ -1,0 +1,31 @@
+﻿@* Modal de exibição após pressionar o botão excluir funcionário *@
+
+<div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Funcionário</h1>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert">
+                    Atenção!
+                    <p>Você deseja realmente excluir este funcionário?</p>
+                </div>
+                <div class="modal-body">
+                    <p>Nome:</p>
+                    <p>Sobrenome:</p>
+                    <p>Departamento:</p>
+                    <p>Data de nascimento:</p>
+                    <p>Gênero:</p>
+                    <p>Carga Horária:</p>
+                    <p>Data da admissão:</p>
+                    <p>Data de desligamento:</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
+            </div>
+        </div>
+    </div>
+</div>

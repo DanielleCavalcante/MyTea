@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Painel Admin";
 }
 
@@ -15,15 +15,15 @@
                 </button>
                 <button class="aba-navegacao nav-link" id="nav-wbs-tab" data-bs-toggle="tab" data-bs-target="#nav-wbs" role="tab">
                     WBS
-                </button>                            
+                </button>
                 <button class="aba-navegacao nav-link" id="nav-funcionario-tab" data-bs-toggle="tab" data-bs-target="#nav-funcionario" role="tab">
                     Funcionários
                 </button>
             </div>
         </nav>
-    </section> 
+    </section>
 
-    
+
 
     <div class="tab-content" id="nav-tabContent">
 
@@ -56,9 +56,9 @@
                 <p class="mt-5 mb-2">Lista de Departamentos cadastrados:</p>
 
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">                       
+                    <table class="table table-striped table-hover">
                         <thead class="cabeçalho-tabela">
-                            <tr >
+                            <tr>
                                 <th scope="col">Código</th>
                                 <th scope="col">Departamento</th>
                                 <th scope="col" colspan="2"></th>
@@ -93,43 +93,18 @@
                     </table>
                 </div>
 
-                @*                   
-                FUNÇÃO CADASTRAR 
+                @*
+                FUNÇÃO CADASTRAR
                 Modal de exibição após pressionar o botão cadastrar novo departamento
                 *@
 
                 <div class="modal fade" id="botao-cadastrar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Departamento</h1>
-                        </div>
-                        <div class="modal-body">
-                            <label class="labels mb-2">Nome Departamento</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                @*
-                FUNÇÃO EDITAR
-                Modal de exibição após pressionar 0 botão editar novo departamento 
-                *@
-
-                <div class="modal fade" id="botao-editar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Departamento</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Departamento</h1>
                             </div>
-                            <div class="modal-body">                                
+                            <div class="modal-body">
                                 <label class="labels mb-2">Nome Departamento</label>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
@@ -143,16 +118,41 @@
                     </div>
                 </div>
 
-                @* 
+                @*
+                FUNÇÃO EDITAR
+                Modal de exibição após pressionar 0 botão editar novo departamento
+                *@
+
+                <div class="modal fade" id="botao-editar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Departamento</h1>
+                            </div>
+                            <div class="modal-body">
+                                <label class="labels mb-2">Nome Departamento</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*
 
                 FUNÇÃO EXCLUIR
-                Modal de exibição após pressionar o botão excluir de novo departamento *@       
-               
+                Modal de exibição após pressionar o botão excluir de novo departamento *@
+
                 <div class="modal fade" id="botao-excluir-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Departamento</h1>                              
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Departamento</h1>
                             </div>
                             <div class="modal-body">
                                 <div class="alert alert-danger" role="alert">
@@ -163,13 +163,13 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Código</th>
-                                            <th scope="col">Departamento</th>                                            
+                                            <th scope="col">Departamento</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>Tecnologia</td>                                           
+                                            <td>Tecnologia</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -183,6 +183,7 @@
                 </div>
             </div>
         </div>
+
 
 
         @* Visualização das funcionalidades de WBS *@
@@ -213,59 +214,18 @@
 
                 <p class="mt-5 mb-2">Lista de WBS cadastradas:</p>
 
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead class="cabeçalho-tabela">
-                            <tr>
-                                <th scope="col">Código</th>
-                                <th scope="col">WBS</th>                              
-                                <th scope="col" colspan="2"></th>                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>A3019201</td>
-                                <td>Treinamento</td>                             
-                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-wbs">Editar</button>
-                                    <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-wbs">Excluir</button>
-                                </td>
-                            </tr>                          
-                        </tbody>
-                    </table>
-                </div>
+                <partial name="_ListaWBS" model="Model" />
 
-                
+
                 @*
                 FUNÇÃO CADASTRAR
                 Modal de exibição após pressionar o botão cadastrar nova WBS
                 *@
 
                 <div class="modal fade" id="botao-cadastrar-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header mb-3">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Wbs</h1>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Descrição</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Chargeability</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Sim">
-                                </div>
-                            </div>                            <
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                            </div>
-                        </div>
-                    </div>
+
+                    <partial name="_CadastrarWBS" model="Model" />
+
                 </div>
 
                 @*
@@ -274,73 +234,25 @@
                 *@
 
                 <div class="modal fade" id="botao-editar-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header mb-3">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar WBS</h1>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Descrição</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Chargeability</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Sim">
-                                </div>
-                            </div>                            
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <partial name="_EditarWBS" model="Model" />
+
                 </div>
 
                 @*
-
                 FUNÇÃO EXCLUIR
-                Modal de exibição após pressionar o botão excluir WBS *@
+                Modal de exibição após pressionar o botão excluir WBS 
+                *@
 
                 <div class="modal fade" id="botao-excluir-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir WBS</h1>
-                            </div>
-                            <div class="modal-body">
-                                <div class="alert alert-danger" role="alert">
-                                    Atenção!
-                                    <p>Você deseja realmente excluir esta wbs?</p>
-                                </div>
-                                <table class="table mt-5 table-striped ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Descrição</th>
-                                            <th scope="col">Chargeability</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">A301929</th>
-                                            <td>Treinamento</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <partial name="_ExcluirWBS" model="Model" />
+
                 </div>
             </div>
         </div>
 
-        @* Visualização das funcionalidades de Funcionário *@
+        @* VISUALIZAÇÃO DAS FUNCIONALIDADES DO FUNCIONÁRIO --------------------------- *@
 
         <div class="tab-pane fade show" id="nav-funcionario" role="tabpanel">
             <div class="container my-5 px-0">
@@ -368,260 +280,36 @@
 
                 <p class="mt-5 mb-2">Lista de Funcionários cadastrados:</p>
 
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead class="cabeçalho-tabela">
-                            <tr>
-                                <th scope="col">Código</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Sobrenome</th>
-                                <th scope="col">Departamento</th>
-                                <th scope="col" colspan="2"></th>
-                                <th scope="col" colspan="2"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Maria</td>
-                                <td>dos Santos</td>
-                                <td>Tecnologia</td>
-                                <td colspan="2">
-                                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                                </td>
-                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
-                                    <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>João</td>
-                                <td>Alves</td>
-                                <td>Recursos Humanos</td>
-                                <td colspan="2">
-                                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                                </td>
-                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                                    <button type="button" class="btn botao-padrao">Editar</button>
-                                    <button type="button" class="btn botao-excluir">Excluir</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Felipe</td>
-                                <td>Ferraz</td>
-                                <td>Contabilidade</td>
-                                <td colspan="2">
-                                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                                </td>
-                                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                                    <button type="button" class="btn botao-padrao">Editar</button>
-                                    <button type="button" class="btn botao-excluir">Excluir</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <partial name="_ListaFuncionarios" />
 
                 @*
                 FUNÇÃO EXIBIR MAIS (SOMENTE PARA A TABELA DE FUNCIONÁRIO)
                 Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais
                 *@
 
-                <div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Informações sobre o Funcionário</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Nome:</p>
-                                <p>Sobrenome:</p>
-                                <p>Departamento:</p>
-                                <p>Data de nascimento:</p>
-                                <p>Gênero:</p>
-                                <p>Carga Horária:</p>
-                                <p>Data da admissão:</p>
-                                <p>Data de desligamento:</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                <partial name="_VerMaisFuncionario" />
+            
                 @*
                 FUNÇÃO CADASTRAR
                 Modal de exibição após pressionar o botão cadastrar novo funcionário
                 *@
 
-                <div class="modal fade" id="botao-cadastrar-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header mb-3">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Funcionário</h1>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Nome</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Sobrenome</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Data Nascimento</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 19/05/2000">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Gênero</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: F">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Data Admissão</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Carga Horária</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Departamento</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Nível de Acesso</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 3 - Funcionário">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_CadastrarFuncionario" />
 
                 @*
                 FUNÇÃO EDITAR
                 Modal de exibição após pressionar botão editar funcionário
                 *@
 
-                <div class="modal fade" id="botao-editar-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header mb-3">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Funcionário</h1>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Nome</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Sobrenome</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Data Nascimento</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 19/05/2000">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Gênero</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: F">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Data Admissão</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Carga Horária</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Departamento</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
-                                </div>
-                            </div>
-                            <div class="modal-body modal-cadastrar-func">
-                                <label class="labels mb-2">Nível de Acesso</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 3 - Funcionário">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_EditarFuncionario" />
 
                 @*
-
                 FUNÇÃO EXCLUIR
-                Modal de exibição após pressionar o botão excluir funcionário *@
+                Modal de exibição após pressionar o botão excluir funcionário 
+                *@
 
-                <div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Funcionário</h1>
-                            </div>
-                            <div class="modal-body">
-                                <div class="alert alert-danger" role="alert">
-                                    Atenção!
-                                    <p>Você deseja realmente excluir este funcionário?</p>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Nome:</p>
-                                    <p>Sobrenome:</p>
-                                    <p>Departamento:</p>
-                                    <p>Data de nascimento:</p>
-                                    <p>Gênero:</p>
-                                    <p>Carga Horária:</p>
-                                    <p>Data da admissão:</p>
-                                    <p>Data de desligamento:</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_ExcluirFuncionario" />
+
             </div>
          </div>
     </div>

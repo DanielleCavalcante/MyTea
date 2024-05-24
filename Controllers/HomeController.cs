@@ -26,7 +26,7 @@ namespace MyTea.Controllers
             
         }
 
-
+        /*
         [HttpPost]
         public IActionResult Index(Horas registroHoras)
         {
@@ -34,7 +34,7 @@ namespace MyTea.Controllers
             if (ModelState.IsValid)
             {
                 Repository.Inserir(registroHoras);
-                return View("_TestePartialView", registroHoras);
+                return View("Index", registroHoras);
             }
             else
             {
@@ -42,51 +42,29 @@ namespace MyTea.Controllers
             }
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+        */
 
-        
         [HttpPost]
         public ActionResult CalcularHoras(int valor1, int valor2)
         {
-            var modelo = new Horas();
+            var validacaoHoras = new Horas();
 
             int resultado = valor1 + valor2;            
 
             if (valor1 < 8)
             {
-                modelo.MensagemErroHorasDia = true;
+                validacaoHoras.MensagemErroHorasDia = true;
             } else if (resultado < 88)
                 {
-                    modelo.MensagemErroHorasQuinz = true;
+                validacaoHoras.MensagemErroHorasQuinz = true;
                 }
                 else
             {
-                modelo.MensagemErroHorasQuinz = false;
-                modelo.MensagemErroHorasDia = false;
+                validacaoHoras.MensagemErroHorasQuinz = false;
+                validacaoHoras.MensagemErroHorasDia = false;
             }
-            return View("Index", modelo);
+            return View("Index", validacaoHoras);
         }
-
-        /*
-        public ActionResult CalcularHorasDia(string valor1)
-        {
-            var modelo = new Horas();
-            double val1;
-
-            if (double.TryParse(valor1, out val1))
-            {
-                
-                modelo.MensagemErroHorasDia = false;
-            }
-            else { 
-               
-                modelo.MensagemErroHorasDia = true;
-            }
-            return View("Index", modelo);
-        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

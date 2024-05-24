@@ -151,10 +151,13 @@ p{
 /* Estilos globais para as tabelas */
 
 thead {
-    background-color: var(--preto-padrao);
+    background-color: var(--primaria);
     color: var(--branco-padrao);
 }
 
+td, tr {
+    vertical-align: middle;
+}
 
 /* View de Login */
 /* Seção de formulário de login */
@@ -297,6 +300,10 @@ thead {
     border: none;
 }
 
+/*cabeçalhos tela do Painel Admin*/
+#cabeçalho-tabela {
+    background-color: var(--primaria);
+}
 
 /* View de Painel Admin */
 .aba-navegacao {
@@ -326,4 +333,26 @@ thead {
 
 .modal-cadastrar-func {
     padding: 0 20px 0 20px;
+}
+
+.form-check {
+    margin-right: 20px; /* Espaçamento entre os elementos */
+}
+
+.seletor-funcionario {
+    height: 40px;
+    font-size: 12px;
+    border-radius: 20px;
+    color: var(--cinza);
+}
+
+/* Painel Admin - Cadastrar WBS */
+
+.form-check-input:checked {
+    background-color: var(--cinza);
+}
+#label-radio {
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    margin-right:20px;
 }

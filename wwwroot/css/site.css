@@ -309,6 +309,7 @@ td, tr {
 
 .form-check {
     margin-right: 20px; /* Espaçamento entre os elementos */
+    color: var(--cinza);
 }
 
 .seletor-funcionario {
@@ -316,4 +317,8 @@ td, tr {
     font-size: 12px;
     border-radius: 20px;
     color: var(--cinza);
+}
+
+.input-radio-func {
+    font-size: 12px;
 }

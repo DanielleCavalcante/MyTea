@@ -13,31 +13,6 @@ namespace MyTea.Controllers
             _logger = logger;
         }
 
-        /* 
-         
-           public IActionResult Index()
-        {
-            int quantidade = 5; // Exemplo de quantidade
-            decimal precoUnitario = 20.0m; // Exemplo de preço unitário
-            decimal desconto = 0.1m; // 10% de desconto
-            decimal precoTotal;
-
-            if (quantidade > 10)
-            {
-                precoTotal = (quantidade * precoUnitario) * (1 - desconto);
-            }
-            else
-            {
-                precoTotal = quantidade * precoUnitario;
-            }
-
-            ViewBag.PrecoTotal = precoTotal;
-
-            return View();
-        }
-         
-         */
-
         public IActionResult Index()
         {
             var feriado = new Horas
@@ -72,27 +47,46 @@ namespace MyTea.Controllers
             return View();
         }
 
+        
         [HttpPost]
-        public ActionResult Calcular(string valor1, string valor2)
+        public ActionResult CalcularHorasDia(int valor1, int valor2)
         {
             var modelo = new Horas();
-            // Tente converter os valores para double
-            double val1, val2;
-            if (double.TryParse(valor1, out val1) && double.TryParse(valor2, out val2))
+
+            int resultado = valor1 + valor2;            
+
+            if (valor1 < 8)
             {
-                // Realize o cálculo
-                double resultado = val1 + val2;
-                // Defina a condição com base no resultado do cálculo
-                modelo.DeveMostrarDiv = resultado < 88;
-            }
-            else
+                modelo.MensagemErroHorasDia = true;
+            } else if (resultado < 88)
+                {
+                    modelo.DeveMostrarDiv = true;
+                }
+                else
             {
-                // Se a conversão falhar, defina a condição como false
                 modelo.DeveMostrarDiv = false;
+                modelo.MensagemErroHorasDia = false;
             }
             return View("Index", modelo);
         }
 
+        /*
+        public ActionResult CalcularHorasDia(string valor1)
+        {
+            var modelo = new Horas();
+            double val1;
+
+            if (double.TryParse(valor1, out val1))
+            {
+                
+                modelo.MensagemErroHorasDia = false;
+            }
+            else { 
+               
+                modelo.MensagemErroHorasDia = true;
+            }
+            return View("Index", modelo);
+        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

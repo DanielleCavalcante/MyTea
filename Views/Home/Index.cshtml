@@ -8,17 +8,6 @@
 
 <div class="container">
     
-
-@if (Model.DeveMostrarDiv)
-{
-    <div>
-            <div class="alert alert-danger" role="alert">
-                A simple danger alert—check it out!
-            </div>
-    </div>
-}
-
-   
     <div class="d-flex justify-content-end mt-5">
         <button class="btn navegacao-calendario"><</button>
 
@@ -46,14 +35,28 @@
        
     </div>
 
-    
-    @using (Html.BeginForm("Calcular", "Home", FormMethod.Post))
+    @if (Model.DeveMostrarDiv)
+    {
+        <div class="alert alert-danger mt-5" role="alert">
+            <p>Não foi possível enviar o seu relatório de horas!</p>
+            <p>Você não cumpriu a carga horária proposta na quinzena</p>
+        </div>
+    }
+
+    @if (Model.MensagemErroHorasDia)
+    {
+        <div class="alert alert-danger mt-5" role="alert">
+            <p>Não foi possível enviar o seu relatório de horas!</p>
+            <p>Você não cumpriu a carga horária diária</p>
+        </div>
+    }
+
+    @using (Html.BeginForm("CalcularHorasDia", "Home", FormMethod.Post))
     {
     <form method="post">
         <div class="d-flex justify-content-end mt-5">
             <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
         </div>
-
         <div class="table-responsive" id="tabela-home">
             <table class="table table-hover mt-5">
                 <thead id="cabecalho-tabela-home">

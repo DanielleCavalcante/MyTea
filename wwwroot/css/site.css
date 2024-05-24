@@ -329,8 +329,23 @@ td, tr {
         
     }
 
-/* Painel Admin - Cadastrar Funcionário */
+.navbar-toggler {
+    background-color: var(--primaria-escura);
+}
 
+    .navbar-toggler:focus {
+        background-color: var(--primaria);
+        border: none;
+        outline:none;
+    }
+
+.fa-bars {
+    color: white;
+    margin-top: 5px;
+}
+
+
+/* Painel Admin - Cadastrar Funcionário */
 .modal-cadastrar-func {
     padding: 0 20px 0 20px;
 }

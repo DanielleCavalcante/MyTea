@@ -15,17 +15,55 @@ namespace MyTea.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var feriado = new Horas
+            {
+                Feriado = true, // condicional para criar uma linha na tabela quando existe feriado no mês
+                LinhaAdicionalTabela = true, // condicional para criar uma linha na tabela quando as primeiras cinco linhas já foram usadas
+                               
+            };
+
+            return View(feriado);
+            
         }
 
-        public IActionResult PainelAdmin()
+        /*
+        [HttpPost]
+        public IActionResult Index(Horas registroHoras)
         {
-            return View();
+
+            if (ModelState.IsValid)
+            {
+                Repository.Inserir(registroHoras);
+                return View("Index", registroHoras);
+            }
+            else
+            {
+                return View();
+            }
         }
 
-        public IActionResult Login()
+        */
+
+        [HttpPost]
+        public ActionResult CalcularHoras(int valor1, int valor2)
         {
-            return View();
+            var validacaoHoras = new Horas();
+
+            int resultado = valor1 + valor2;            
+
+            if (valor1 < 8)
+            {
+                validacaoHoras.MensagemErroHorasDia = true;
+            } else if (resultado < 88)
+                {
+                validacaoHoras.MensagemErroHorasQuinz = true;
+                }
+                else
+            {
+                validacaoHoras.MensagemErroHorasQuinz = false;
+                validacaoHoras.MensagemErroHorasDia = false;
+            }
+            return View("Index", validacaoHoras);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

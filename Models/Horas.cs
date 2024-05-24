@@ -4,7 +4,7 @@
     {
         public bool Feriado { get; set; }
 
-        public bool DeveMostrarDiv { get; set; }
+        public bool MensagemErroHorasQuinz { get; set; }
         public bool MensagemErroHorasDia { get; set; }
         public bool LinhaAdicionalTabela { get; set; }
         public int TotalHorasQuinzEsperada { get; set; }

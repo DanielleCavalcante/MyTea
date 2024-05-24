@@ -49,7 +49,7 @@ namespace MyTea.Controllers
 
         
         [HttpPost]
-        public ActionResult CalcularHorasDia(int valor1, int valor2)
+        public ActionResult CalcularHoras(int valor1, int valor2)
         {
             var modelo = new Horas();
 
@@ -60,11 +60,11 @@ namespace MyTea.Controllers
                 modelo.MensagemErroHorasDia = true;
             } else if (resultado < 88)
                 {
-                    modelo.DeveMostrarDiv = true;
+                    modelo.MensagemErroHorasQuinz = true;
                 }
                 else
             {
-                modelo.DeveMostrarDiv = false;
+                modelo.MensagemErroHorasQuinz = false;
                 modelo.MensagemErroHorasDia = false;
             }
             return View("Index", modelo);

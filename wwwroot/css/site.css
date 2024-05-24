@@ -302,3 +302,14 @@ thead {
 .modal-cadastrar-func {
     padding: 0 20px 0 20px;
 }
+
+/* Painel Admin - Cadastrar WBS */
+
+.form-check-input:checked {
+    background-color: var(--cinza);
+}
+#label-wbs {
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    margin-right:20px;
+}

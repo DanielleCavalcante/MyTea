@@ -1,0 +1,43 @@
+﻿@model WBS;
+@*
+   FUNÇÃO CADASTRAR
+   Modal de exibição após pressionar o botão cadastrar nova WBS
+*@
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header mb-3">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar WBS</h1>
+        </div>
+        <div class="modal-body modal-cadastrar-func">
+            <label class="labels mb-2">WBS</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
+            </div>
+        </div>
+        <div class="modal-body modal-cadastrar-func">
+            <label class="labels mb-2">Descrição</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Treinamento">
+            </div>
+        </div>
+        <div class="modal-body modal-cadastrar-func">
+            <label class="labels mb-2">Chargeability</label>
+            <div class="input-group mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" value=1>
+                    <label class="form-check-label" id="label-wbs">Sim</label>
+                </div>
+                <div>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" value=0>
+                    <label class="form-check-label" id="label-wbs">Não</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn botao-padrao">Salvar alterações</button>
+        </div>
+    </div>
+</div>

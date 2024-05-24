@@ -1,0 +1,30 @@
+﻿@model WBS;
+
+@*
+    Tabela para exibir dados da WBS
+*@
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="cabeçalho-tabela">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">WBS</th>
+                <th scope="col" >Descrição</th>
+                <th scope="col" colspan="2">Chargeability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>A3019201</td>
+                <td>Treinamento</td>
+                <td>Sim</td>
+                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-wbs">Editar</button>
+                    <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-wbs">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -307,6 +307,18 @@ td, tr {
     padding: 0 20px 0 20px;
 }
 
+/*tabelas*/
+.thead-cad-func {
+    background-color: var(--branco-padrao);
+    color: var(--preto-padrao);
+    text-align: center
+}
+
+.tbody-cad-func {
+    font-size: 13px;
+}
+
+/*select - "dropdown"*/
 .seletor-funcionario {
     height: 40px;
     font-size: 12px;
@@ -314,6 +326,7 @@ td, tr {
     color: var(--cinza);
 }
 
+/*radio button*/
 .input-radio-func {
     margin-right: 20px; /* Espaçamento entre os elementos */
     color: var(--cinza);

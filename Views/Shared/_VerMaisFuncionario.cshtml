@@ -4,13 +4,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Informações sobre o Funcionário</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Visualização do funcionário</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 @*Tabela de informações, dentro do Model*@
-                <table class="table table-striped table-hover table-bordered">
-                    <tbody>
+                <table class="table table table-bordered">
+                    <thead class="thead-cad-func">
+                        <th colspan="2">Informações do Funcionário</th>
+                    </thead>
+                    <tbody class="tbody-cad-func">
                         <tr>
                             <th>Nome</th>
                             <td>Nome..</td>

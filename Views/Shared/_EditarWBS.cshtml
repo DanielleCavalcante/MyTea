@@ -1,0 +1,30 @@
+﻿@model WBS;
+
+@*
+   FUNÇÃO EDITAR
+   Modal de exibição após pressionar botão editar wbs
+*@
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header mb-3">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar WBS</h1>
+        </div>
+        <div class="modal-body modal-cadastrar-func">
+            <label class="labels mb-2">Descrição</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
+            </div>
+        </div>
+        <div class="modal-body modal-cadastrar-func">
+            <label class="labels mb-2">Chargeability</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Sim">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn botao-padrao">Salvar alterações</button>
+        </div>
+    </div>
+</div>

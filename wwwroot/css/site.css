@@ -326,9 +326,14 @@ td, tr {
     color: var(--cinza);
 }
 
-/*radio button*/
-.input-radio-func {
-    margin-right: 20px; /* Espaçamento entre os elementos */
-    color: var(--cinza);
+/* Painel Admin - Cadastrar WBS */
+
+.form-check-input:checked {
+    background-color: var(--cinza);
+}
+#label-radio {
     font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    margin-right: 20px;
+    color: var(--cinza);
 }

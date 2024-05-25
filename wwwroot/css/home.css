@@ -19,10 +19,6 @@
     font-weight: 700;
 }
 
-.fa-solid:hover {
-    color: var(--primaria-clara);
-}
-
 .navegacao-calendario {
     margin: 0px 10px 0px 10px;
     cursor: pointer;
@@ -30,10 +26,13 @@
     font-weight: 900;
 }
 
+    .navegacao-calendario:hover {
+        background-color: transparent;
+    }
+
     .navegacao-calendario:focus {
         border: 1px solid var(--primaria);
-        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
-        background-color: white;
+        box-shadow: 0 0 0 0.1rem var(--primaria-clara);       
     }
 
     .navegacao-calendario:active:focus {
@@ -41,6 +40,14 @@
         box-shadow: 0 0 0 0.1rem var(--primaria-clara);
     }
 
+.icone-calendario{
+    color: var(--primaria);
+    font-size: 20px;
+}
+
+.icone-calendario:hover {
+    color: var(--primaria-escura);
+}
 
 #tabela-home {
     font-size: 12px;

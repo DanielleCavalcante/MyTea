@@ -17,14 +17,13 @@
 <h1>@ViewData["Home"]</h1>
 
 <div class="container">
-        
+
 
     @using (Html.BeginForm("CalcularHoras", "Home", FormMethod.Post))
     {
     <form method="post">
 
         <div class="row">
-
 
                 <p class="col-md-8 col-12 d-flex justify-content-md-start justify-content-center mt-5" id="saudacao-usuario">Olá, Natália</p>
                 <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
@@ -147,15 +146,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row" colspan="4" class="linha-seletor">
-                            <p>
-                                <select class="seletor-wbs">
-                                    <option value="WBS0911009">WBS0911009 - Férias</option>
-                                    <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                    <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                    <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
-                                </select>
-                            </p>
+                         <th scope="row" colspan="4" class="linha-seletor" id="mostrarSelectBtn1">
+                                @{
+                                    // Inicialmente, o select não é visível
+                                    var isSelectVisible1 = false;
+                                }
+
+                                <select id="meuSelect1" style="display: @(isSelectVisible1 ? "block" : "none");">
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>
+                                    <!-- Adicione mais opções conforme necessário -->
+                                </select>                                
                         </th>
 
 
@@ -181,17 +183,18 @@
 
 
                          <tr>
-                            <th scope="row" colspan="4" class="linha-seletor">
-                                <p>
-                                    @*
-                                <select class="seletor-wbs">
-                                <option value="WBS0911009">WBS0911009 - Férias</option>
-                                <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                            <th scope="row" colspan="4" class="linha-seletor" id="mostrarSelectBtn2">
+                                @{
+                                    // Inicialmente, o select não é visível
+                                    var isSelectVisible2 = false;
+                                }
+
+                                <select id="meuSelect2" style="display: @(isSelectVisible2 ? "block" : "none");">
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>
+                                    <!-- Adicione mais opções conforme necessário -->
                                 </select>
-                                    *@                                    
-                                </p>
                             </th>
 
 
@@ -416,6 +419,37 @@
     }
 </div>
 
+@section Scripts {
+    <script>
+        document.getElementById('mostrarSelectBtn1').addEventListener('click', function () {
+            var select = document.getElementById('meuSelect1');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('meuSelect1').addEventListener('change', function () {
+            if (this.value) {
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+
+    <script>
+        document.getElementById('mostrarSelectBtn2').addEventListener('click', function () {
+            var select = document.getElementById('meuSelect2');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('meuSelect2').addEventListener('change', function () {
+            if (this.value) {
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+
+   
+}
 
 
 

@@ -26,7 +26,6 @@ p{
 
 /* Estilo navbar */
 
-
 .botao-navbar {
     color: var(--primaria);
     font-size: 14px;
@@ -58,11 +57,10 @@ p{
     cursor: pointer;
 }
 
-.fa-bars {
+.icone-hamburguer {
     color: white;
     margin-top: 5px;
 }
-
 
 
 /* Estilos globais de botões */

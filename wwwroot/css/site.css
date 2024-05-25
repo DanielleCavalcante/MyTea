@@ -253,9 +253,13 @@ td, tr {
 }
 
 #saudacao-usuario {
-    font-size: 24px;
+    font-size: 18px;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
+}
+
+.fa-solid:hover{
+    color: var(--primaria-clara);
 }
 
 .navegacao-calendario {

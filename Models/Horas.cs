@@ -1,6 +1,6 @@
 ﻿namespace MyTea.Models
 {
-    public class Horas
+    public class Horas : Funcionario
     {
         public bool Feriado { get; set; }
         public bool MensagemErroHorasQuinz { get; set; }

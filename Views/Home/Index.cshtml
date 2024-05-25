@@ -142,13 +142,13 @@
 
                     @* Primeira linha da tabela *@
                     <tr>
-                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectUm">
+                         <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectUm">
                                 @{                                   
                                     var seletorUmVisivel = false;
                                 }
 
-                                <select id="seletorLinhaUm" style="display: @(seletorUmVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma opção</option>
+                                <select id="seletorLinhaUm" class="seletor-wbs" style="display: @(seletorUmVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
                                     <option value="opcao1">Opção 1</option>
                                     <option value="opcao2">Opção 2</option>                                    
                                 </select>                                
@@ -180,8 +180,8 @@
                                     var seletorDoisVisivel = false;
                                 }
 
-                                <select id="seletorLinhaDois" style="display: @(seletorDoisVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma opção</option>
+                                <select id="seletorLinhaDois" class="seletor-wbs" style="display: @(seletorDoisVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
                                     <option value="opcao1">Opção 1</option>
                                     <option value="opcao2">Opção 2</option>                                    
                                 </select>
@@ -209,14 +209,14 @@
 
                     @* Terceira linha da tabela *@
                     <tr>
-                            
+
                             <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorTres">
                                 @{
                                     var seletorTresVisivel = false;
                                 }
 
-                                <select id="seletorLinhaTres" style="display: @(seletorTresVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma opção</option>
+                                <select id="seletorLinhaTres" class="seletor-wbs" style="display: @(seletorTresVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
                                     <option value="opcao1">Opção 1</option>
                                     <option value="opcao2">Opção 2</option>
                                 </select>
@@ -243,14 +243,14 @@
 
                     @* Quarta linha da tabela *@
                     <tr>
-                        
+
                             <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorQuatro">
                                 @{
                                     var seletorQuatroVisivel = false;
                                 }
 
-                                <select id="seletorLinhaQuatro" style="display: @(seletorQuatroVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma opção</option>
+                                <select id="seletorLinhaQuatro" class="seletor-wbs" style="display: @(seletorQuatroVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
                                     <option value="opcao1">Opção 1</option>
                                     <option value="opcao2">Opção 2</option>
                                 </select>
@@ -277,13 +277,13 @@
 
                     @*Quinta linha da tabela *@
                     <tr>
-                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorCinco">
+                            <th scope="row" colspan="6" id="mostrarSeletorCinco" class="linha-seletor">
                                 @{
                                     var seletorCincoVisivel = false;
                                 }
 
-                                <select id="seletorLinhaCinco" style="display: @(seletorCincoVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma opção</option>
+                                <select id="seletorLinhaCinco" class="seletor-wbs" style="display: @(seletorCincoVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
                                     <option value="opcao1">Opção 1</option>
                                     <option value="opcao2">Opção 2</option>
                                 </select>

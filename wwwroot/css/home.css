@@ -1,5 +1,13 @@
 ﻿/* View Home */
 
+#saudacao-usuario {
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+/* Navegação quinzena */
+
 #calendario {
     cursor: pointer;
     color: var(--primaria);
@@ -12,12 +20,6 @@
     #calendario:focus {
         border: 2px solid var(--primaria-clara);
     }
-
-#saudacao-usuario {
-    font-size: 18px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-}
 
 .navegacao-calendario {
     margin: 0px 10px 0px 10px;
@@ -49,12 +51,19 @@
     color: var(--primaria-escura);
 }
 
+
+/* Tabela */
+
 #tabela-home {
     font-size: 12px;
 }
 
 #cabecalho-tabela-home {
     background-color: var(--primaria-escura);
+}
+
+.linha-seletor{
+    width: 200px;
 }
 
 .seletor-wbs {
@@ -70,10 +79,4 @@
     width: 35px;
     background-color: transparent;
     border: none;
-}
-
-#mostrarSelectBtn{
-    background-color: transparent;
-    border: none;
-    color: transparent;
 }

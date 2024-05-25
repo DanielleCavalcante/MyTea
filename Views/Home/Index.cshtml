@@ -23,9 +23,9 @@
                 <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
                     <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-left"></i></button>
 
-                    <select id="seletorQuinzena" class="seletor-quinzena">                        
-                        <option value="opcao1">01/04/24</option>
-                        <option value="opcao2">15/04/24</option>
+                    <select id="seletorQuinzena" class="seletor-quinzena" onchange="mostrarDiv(this)">
+                        <option value="1">01/04/24</option>
+                        <option value="2">15/04/24</option>
                     </select>
                     
                     <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-right"></i></button>
@@ -35,7 +35,13 @@
                 <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
                     <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
                 </div>
+
+                @* As divs que serão exibidas ou ocultadas com base na seleção *@
+                <div id="div1" style="display:none;">Valor selecionado: <span id="valorDiv1"></span></div>
+                <div id="div2" style="display:none;">Valor selecionado: <span id="valorDiv2"></span></div>
+
         </div>
+
         
         @* Condicional para exibição de alerta de carga horária quinzenal não cumprida *@
         @if (Model.MensagemErroHorasQuinz)
@@ -474,31 +480,37 @@
             }
         });
     </script>
-
-    @* Script para capturar a quinzena selecionada *@
+   
+    @* Script para exibir a informação correspondente a quinzena selecionada *@
     <script>
-        document.getElementById('seletorQuinzena').addEventListener('change', function () {
-            if (this.value) {
-                // Faça algo quando uma opção for selecionada
-                alert('Você selecionou: ' + this.value);
+        function mostrarDiv(select) {
+            // Oculta todas as divs
+            document.getElementById('div1').style.display = 'none';
+            document.getElementById('div2').style.display = 'none';
+
+            // Exibe a div correspondente à opção selecionada
+            var valor = select.value;
+            if (valor == '1') {
+                document.getElementById('div1').style.display = 'block';
+                document.getElementById('valorDiv1').textContent = valor;
+            } else if (valor == '2') {
+                document.getElementById('div2').style.display = 'block';
+                document.getElementById('valorDiv2').textContent = valor;
             }
-        });
+        }
     </script>
-
 }
-
-
 
 @* Implementação para calendário dinâmico *@
 @*
-                <select id="calendario">
+    <select id="calendario">
 
-                @foreach (Quinzenas registro in Model)
-                {
-                <option value=>@registro.Quinzena</option>
-                }
+     @foreach (Quinzenas registro in Model)
+     {
+      <option value=>@registro.Quinzena</option>
+      }
 
-                </select>
-                *@
+     </select>
+*@
 
 

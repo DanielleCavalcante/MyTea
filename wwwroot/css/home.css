@@ -8,7 +8,11 @@
 
 /* Navegação quinzena */
 
-#calendario {
+
+.seletor-quinzena {
+    margin: 0px 10px 0px 10px;
+    cursor: pointer;
+    color: var(--primaria);
     cursor: pointer;
     color: var(--primaria);
     font-weight: 600;
@@ -17,30 +21,19 @@
     border: 2px solid var(--cinza-claro);
 }
 
-    #calendario:focus {
-        border: 2px solid var(--primaria-clara);
-    }
-
-.navegacao-calendario {
-    margin: 0px 10px 0px 10px;
-    cursor: pointer;
-    color: var(--primaria);
-    font-weight: 900;
+.seletor-quinzena:hover {
+    background-color: transparent;
 }
 
-    .navegacao-calendario:hover {
-        background-color: transparent;
-    }
-
-    .navegacao-calendario:focus {
-        border: 1px solid var(--primaria);
-        box-shadow: 0 0 0 0.1rem var(--primaria-clara);       
-    }
-
-    .navegacao-calendario:active:focus {
-        border: 1px solid var(--primaria);
+    .seletor-quinzena:focus {
+        border: 2px solid var(--primaria-clara);
         box-shadow: 0 0 0 0.1rem var(--primaria-clara);
     }
+
+.seletor-quinzena:active:focus {
+     border: 1px solid var(--primaria);
+     box-shadow: 0 0 0 0.1rem var(--primaria-clara);
+}
 
 .icone-calendario{
     color: var(--primaria);

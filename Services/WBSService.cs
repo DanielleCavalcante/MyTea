@@ -10,6 +10,7 @@ namespace MyTea.Services
         {
             _httpClient = httpClient;
 
+            /* Lembre de colocar a porta da sua máquina para testar */
             _httpClient.BaseAddress = new Uri("http://localhost:5249");
         }
 

@@ -3,15 +3,14 @@
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
 
-@model Horas
-
 @* Partial View de exibição de navbar *@
 <partial name="_Navbar" model="Model" />
 
 <div class="container">
 
-    @using (Html.BeginForm("CalcularHoras", "Home", FormMethod.Post))
-    {
+    @* @using (Html.BeginForm("CalcularHoras", "Home", FormMethod.Post))
+    { *@
+    
     <form method="post">
 
         <div class="row">
@@ -42,7 +41,7 @@
         </div>
 
         
-        @* Condicional para exibição de alerta de carga horária quinzenal não cumprida *@
+        @* Condicional para exibição de alerta de carga horária quinzenal não cumprida 
         @if (Model.MensagemErroHorasQuinz)
             {
                 <div class="alert alert-danger mt-5" role="alert">
@@ -50,8 +49,8 @@
                     <p>Você não cumpriu a carga horária proposta na quinzena</p>
                 </div>
             }
-
-        @* Condicional para exibição de alerta de carga horária diária não cumprida *@
+        *@
+        @* Condicional para exibição de alerta de carga horária diária não cumprida 
         @if (Model.MensagemErroHorasDia)
             {
                 <div class="alert alert-danger mt-5" role="alert">
@@ -59,7 +58,7 @@
                     <p>Você não cumpriu a carga horária diária</p>
                 </div>
             }
-
+        *@
         @* Tabela de preenchimento de horas *@
         <div class="table-responsive" id="tabela-home">
             <table class="table table-hover mt-5">
@@ -145,7 +144,7 @@
                                 </select>                                
                         </th>
                            
-
+                        @*
                         <td class="m-0 text-center"></td>
                         <td class="m-0 text-center"> <input type="text" asp-for="Dia_Um" name="valor1" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input type="text" asp-for="Dia_Dois" name="valor2" class="form-control input-horas" /></td>
@@ -162,6 +161,8 @@
                         <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"></td>
+                        *@
+                       
                     </tr>
 
                     @* Segunda linha da tabela *@
@@ -398,7 +399,9 @@
             </table>
         </div>
     </form>
-    }
+ 
+    @* } *@
+    
 </div>
 
 @* Scripts de ação de click na linha da tabela para a exibição do seletor de wbs *@

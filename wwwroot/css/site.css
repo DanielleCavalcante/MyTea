@@ -23,8 +23,8 @@ p{
     margin: 0;
 }
 
-/* Estilo navbar */
 
+/* Estilo navbar */
 
 .botao-navbar {
     color: var(--primaria);
@@ -38,7 +38,7 @@ p{
         color: var(--primaria-escura);
     }
 
-#logo{
+#logo {
     width: 25px;
 }
 
@@ -54,7 +54,12 @@ p{
     color: var(--primaria);
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    cursor:pointer;
+    cursor: pointer;
+}
+
+.icone-hamburguer {
+    color: white;
+    margin-top: 5px;
 }
 
 
@@ -159,146 +164,6 @@ td, tr {
     vertical-align: middle;
 }
 
-/* View de Login */
-/* Seção de formulário de login */
-#conteudo-form-login {
-    background-color: #D5FAFF;
-    flex-direction: column;
-    padding-bottom: 20px;
-    height: 100vh;
-}
-
-#formulario-login {
-    width: 25rem;
-    height: 30rem;
-    margin-top: 3rem;
-    padding: 1rem 2rem;
-    border-radius: 20px;
-}
-
-#marca-preta {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    color: var(--preto-padrao);
-    font-size: 28px;
-    margin-left: 10px;
-}
-
-#marca-laranja {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    color: var(--primaria);
-    font-size: 28px;
-}
-
-#logo-form-login {
-    width: 60px;
-}
-
-#titulo-form-login {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-#botao-login {
-    margin-top: 40px;
-}
-
-/* View de Login */
-/* Seção de imagem e animação */
-
-#conteudo-imagens-login {
-    background-color: rgba(109,197,209,0.7);
-    flex-direction: column;
-    color: var(--branco-padrao);
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    padding-bottom: 20px;
-}
-
-#relaxe {
-    color: var(--branco-padrao);   
-    padding: 65px 0px 0px 80px;
-    font-weight: 900;
-    font-size: 30px;
-}
-
-#animacao {
-    width: 100px;
-}
-
-#declare{
-    font-size: 20px;
-}
-
-#imagem-login {
-    max-width: 350px;
-}
-
-
-/* View Home */
-
-#calendario {
-    cursor: pointer;
-    color: var(--primaria);
-    font-weight: 600;
-    padding: 0px 20px 0px 5px;    
-    border-radius: 5px;
-    border: 2px solid var(--cinza-claro);
-}
-
-#calendario:focus {
-    border: 2px solid var(--primaria-clara);
-}
-
-#saudacao-usuario {
-    font-size: 24px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-}
-
-.navegacao-calendario {
-    margin: 0px 10px 0px 10px;
-    cursor: pointer;
-    color: var(--primaria);
-    font-weight: 900;
-}
-
-    .navegacao-calendario:focus {
-        border: 1px solid var(--primaria);
-        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
-        background-color: white;
-    }
-
-    .navegacao-calendario:active:focus {
-        border: 1px solid var(--primaria);
-        box-shadow: 0 0 0 0.1rem var(--primaria-clara);
-    }
-
-
-#tabela-home {
-    font-size: 12px;
-}
-
-#cabecalho-tabela-home {
-    background-color: var(--primaria-escura);
-}
-
-.seletor-wbs {
-    background-color: transparent;
-    border: none;
-    font-weight: 600;
-    color: var(--primaria);
-    cursor:pointer;
-}
-
-.input-horas {
-    font-size: 12px;
-    width: 35px;
-    background-color: transparent;
-    border: none;
-}
 
 /*cabeçalhos tela do Painel Admin*/
 #cabeçalho-tabela {
@@ -329,8 +194,19 @@ td, tr {
         
     }
 
-/* Painel Admin - Cadastrar Funcionário */
+.navbar-toggler {
+    background-color: var(--primaria-escura);
+}
 
+    .navbar-toggler:focus {
+        background-color: var(--primaria);
+        border: none;
+        outline:none;
+    }
+
+
+
+/* Painel Admin - Cadastrar Funcionário */
 .modal-cadastrar-func {
     padding: 0 20px 0 20px;
 }

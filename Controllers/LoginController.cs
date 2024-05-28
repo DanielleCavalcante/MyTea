@@ -2,7 +2,7 @@
 
 namespace MyTea.Controllers
 {
-    public class AccountController : Controller
+    public class LoginController : Controller
     {
         public IActionResult Index()
         {

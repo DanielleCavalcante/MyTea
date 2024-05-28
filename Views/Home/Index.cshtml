@@ -1,133 +1,127 @@
-﻿ @model Horas    
-
-@{
-    ViewData["Title"] = "Tela Inicial";
+﻿@* Arquivo de css para a View Home*@
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
 
-<h1>@ViewData["Home"]</h1>
+@* Partial View de exibição de navbar *@
+<partial name="_Navbar" model="Model" />
 
 <div class="container">
-        
 
-    @using (Html.BeginForm("CalcularHoras", "Home", FormMethod.Post))
-    {
+    @* @using (Html.BeginForm("CalcularHoras", "Home", FormMethod.Post))
+    { *@
+    
     <form method="post">
 
         <div class="row">
 
-                <p class="col-8 mt-5">Olá, Natália</p>
-                <div class="col-2 d-flex justify-content-end mt-5">
-                    <button class="btn navegacao-calendario">Anterior</button>
+                <p class="col-md-8 col-12 d-flex justify-content-md-start justify-content-center mt-5" id="saudacao-usuario">Olá, Natália</p>
 
-                    @* Implementação para calendário dinâmico *@
-                    @*
-                <select id="calendario">
+                @* Navegação entre quinzenas *@
+                <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
+                    <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-left"></i></button>
 
-                @foreach (Quinzenas registro in Model)
-                {
-                <option value=>@registro.Quinzena</option>
-                }
-
-                </select>
-                *@
-
-                    @* Calendário estático *@
-                    <select id="calendario">
+                    <select id="seletorQuinzena" class="seletor-quinzena" onchange="mostrarDiv(this)">
                         <option value="1">01/04/24</option>
                         <option value="2">15/04/24</option>
-                        <option value="3">01/05/24</option>
-                        <option value="4">15/05/24</option>
                     </select>
-
-                    <button class="btn navegacao-calendario">Próximo</button>
+                    
+                    <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-right"></i></button>
 
                 </div>
 
-
-                <div class="col-2 d-flex justify-content-end mt-5">
+                <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
                     <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
                 </div>
-        </div>
-        
 
-            @if (Model.MensagemErroHorasQuinz)
+                @* As divs que serão exibidas ou ocultadas com base na seleção *@
+                <div id="div1" style="display:none;">Valor selecionado: <span id="valorDiv1"></span></div>
+                <div id="div2" style="display:none;">Valor selecionado: <span id="valorDiv2"></span></div>
+
+        </div>
+
+        
+        @* Condicional para exibição de alerta de carga horária quinzenal não cumprida 
+        @if (Model.MensagemErroHorasQuinz)
             {
                 <div class="alert alert-danger mt-5" role="alert">
                     <p>Não foi possível enviar o seu relatório de horas!</p>
                     <p>Você não cumpriu a carga horária proposta na quinzena</p>
                 </div>
             }
-
-            @if (Model.MensagemErroHorasDia)
+        *@
+        @* Condicional para exibição de alerta de carga horária diária não cumprida 
+        @if (Model.MensagemErroHorasDia)
             {
                 <div class="alert alert-danger mt-5" role="alert">
                     <p>Não foi possível enviar o seu relatório de horas!</p>
                     <p>Você não cumpriu a carga horária diária</p>
                 </div>
             }
-
+        *@
+        @* Tabela de preenchimento de horas *@
         <div class="table-responsive" id="tabela-home">
             <table class="table table-hover mt-5">
                 <thead id="cabecalho-tabela-home">
                     <tr>
-                        <th scope="col" colspan="4">WBS</th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col" colspan="6">WBS</th>
+                        <th scope="col">
                             <p class="m-0 text-center">Qua</p>
                             <p class="m-0 text-center">1</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Qui</p>
                             <p class="m-0 text-center">2</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Sex</p>
                             <p class="m-0 text-center">3</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Sab</p>
                             <p class="m-0 text-center">4</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Dom</p>
                             <p class="m-0 text-center">5</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Seg</p>
                             <p class="m-0 text-center">6</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Ter</p>
                             <p class="m-0 text-center">7</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Qua</p>
                             <p class="m-0 text-center">8</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Qui</p>
                             <p class="m-0 text-center">9</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Sex</p>
                             <p class="m-0 text-center">10</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Sab</p>
                             <p class="m-0 text-center">11</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Dom</p>
                             <p class="m-0 text-center">12</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Seg</p>
                             <p class="m-0 text-center">13</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Ter</p>
                             <p class="m-0 text-center">14</p>
                         </th>
-                        <th scope="col d-flex justify-content-center">
+                        <th scope="col">
                             <p class="m-0 text-center">Qua</p>
                             <p class="m-0 text-center">15</p>
                         </th>
@@ -135,19 +129,38 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @* Primeira linha da tabela *@
                     <tr>
-                        <th scope="row" colspan="4" class="linha-seletor">
-                            <p>
-                                <select class="seletor-wbs">
-                                    <option value="WBS0911009">WBS0911009 - Férias</option>
-                                    <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                    <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                    <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
-                                </select>
-                            </p>
+                         <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectUm">
+                                @{                                   
+                                    var seletorUmVisivel = false;
+                                }
+
+                                <select id="seletorLinhaUm" class="seletor-wbs" style="display: @(seletorUmVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>                                    
+                                </select>                                
                         </th>
-
-
+                        
+                          <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"> </td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
+                            <td class="m-0 text-center"></td>
+                        @*                        
                         <td class="m-0 text-center"></td>
                         <td class="m-0 text-center"> <input type="text" asp-for="Dia_Um" name="valor1" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input type="text" asp-for="Dia_Dois" name="valor2" class="form-control input-horas" /></td>
@@ -164,25 +177,25 @@
                         <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"></td>
+                        *@
+                       
                     </tr>
 
-                    @*Segunda linha da tabela *@
+                    @* Segunda linha da tabela *@
+                    <tr>
+                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectDois">
+                                @{                                    
+                                    var seletorDoisVisivel = false;
+                                }
 
-
-                         <tr>
-                            <th scope="row" colspan="4" class="linha-seletor">
-                                <p>
-                                    @*
-                                <select class="seletor-wbs">
-                                <option value="WBS0911009">WBS0911009 - Férias</option>
-                                <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                <select id="seletorLinhaDois" class="seletor-wbs" style="display: @(seletorDoisVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>                                    
                                 </select>
-                                    *@                                    
-                                </p>
                             </th>
 
+                         
 
                             <td class="m-0 text-center"></td>
                             <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
@@ -202,22 +215,19 @@
                             <td class="m-0 text-center"></td>
                         </tr>
 
+                    @* Terceira linha da tabela *@
+                    <tr>
 
-                        @*Terceira linha da tabela *@
+                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorTres">
+                                @{
+                                    var seletorTresVisivel = false;
+                                }
 
-
-                        <tr>
-                            <th scope="row" colspan="4" class="linha-seletor">
-                                <p>
-                                    @*
-                                <select class="seletor-wbs">
-                                <option value="WBS0911009">WBS0911009 - Férias</option>
-                                <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                <select id="seletorLinhaTres" class="seletor-wbs" style="display: @(seletorTresVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>
                                 </select>
-                                *@
-                                </p>
                             </th>
 
 
@@ -239,21 +249,19 @@
                             <td class="m-0 text-center"></td>
                         </tr>
 
-                        @*Quarta linha da tabela *@
+                    @* Quarta linha da tabela *@
+                    <tr>
 
+                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorQuatro">
+                                @{
+                                    var seletorQuatroVisivel = false;
+                                }
 
-                        <tr>
-                            <th scope="row" colspan="4" class="linha-seletor">
-                                <p>
-                                    @*
-                                <select class="seletor-wbs">
-                                <option value="WBS0911009">WBS0911009 - Férias</option>
-                                <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                <select id="seletorLinhaQuatro" class="seletor-wbs" style="display: @(seletorQuatroVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>
                                 </select>
-                                *@
-                                </p>
                             </th>
 
 
@@ -275,21 +283,18 @@
                             <td class="m-0 text-center"></td>
                         </tr>
 
-                        @*Quinta linha da tabela *@
+                    @*Quinta linha da tabela *@
+                    <tr>
+                            <th scope="row" colspan="6" id="mostrarSeletorCinco" class="linha-seletor">
+                                @{
+                                    var seletorCincoVisivel = false;
+                                }
 
-
-                        <tr>
-                            <th scope="row" colspan="4" class="linha-seletor">
-                                <p>
-                                    @*
-                                <select class="seletor-wbs">
-                                <option value="WBS0911009">WBS0911009 - Férias</option>
-                                <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                <select id="seletorLinhaCinco" class="seletor-wbs" style="display: @(seletorCincoVisivel ? "block" : "none");">
+                                    <option value="">Selecione uma WBS</option>
+                                    <option value="opcao1">Opção 1</option>
+                                    <option value="opcao2">Opção 2</option>
                                 </select>
-                                *@
-                                </p>
                             </th>
 
 
@@ -311,74 +316,82 @@
                             <td class="m-0 text-center"></td>
                         </tr>
 
-                    @* Condicional para exibição de linha adicional na Tabela 
-                    @if (Model.LinhaAdicionalTabela)
-                    {
-                        <div>
-                        <tr>
-                            <th scope="row" colspan="4" class="linha-seletor">
-                                <p>
-                                    <select class="seletor-wbs">
-                                        <option value="WBS0911009">WBS0911009 - Férias</option>
-                                        <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                        <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                        <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
-                                    </select>
-                                </p>
-                            </th>
+                    @* Condicional para exibição de linha adicional na Tabela *@
+                    <div>
+                        @*
+                            @if (Model.LinhaAdicionalTabela)
+                            {
+                                <div>
+                            <tr>
+                                <th scope="row" colspan="6" class="linha-seletor">
+                                    <p>
+                                        <select class="seletor-wbs">
+                                            <option value="WBS0911009">WBS0911009 - Férias</option>
+                                            <option value="WBS0911008">WBS0911008 - Day-off</option>
+                                            <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
+                                            <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                                        </select>
+                                    </p>
+                                </th>
 
 
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> </td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Cinco" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Seis" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Sete" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Oito" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Nove" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="number" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                        </tr>
-                        </div>
-                    }
-                    *@
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"> </td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Cinco" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Seis" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Sete" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Oito" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Nove" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="number" class="form-control input-horas" /></td>
+                                <td class="m-0 text-center"></td>
+                            </tr>
+                            </div>
+                            }
+                        *@
+                    </div>                   
 
                     @* Condicional para exibição de linha de feriado na Tabela *@
-                    @if (Model.Feriado)
-                    {
-                        <div>
-                        <tr>
-                            <th scope="row" colspan="4">
-                                Feriado
-                            </th>
-                            <td class="m-0 text-center">8</td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center">8</td>
+                    <div>
+                        @*
+                            @if (Model.Feriado)
+                            {
+                                <div>
+                            <tr>
+                                <th scope="row" colspan="6">
+                                    Feriado
+                                </th>
+                                <td class="m-0 text-center">8</td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center"></td>
+                                <td class="m-0 text-center">8</td>
                             </tr>
-                        </div>
-                    }
-                                           
+                            </div>
+                            }    
+                        *@
+                    </div>
+
+                    @* Linha de Escala de Trabalho *@
                     <tr>
-                        <th scope="row" colspan="4">
+                        <th scope="row" colspan="6">
                             Escala de trabalho
                         </th>
                         <td class="m-0 text-center">8</td>
@@ -402,9 +415,120 @@
             </table>
         </div>
     </form>
-    }
+ 
+    @* } *@
+    
 </div>
 
+@* Scripts de ação de click na linha da tabela para a exibição do seletor de wbs *@
 
+@section Scripts {
+
+    @* Scripts para a linha um da tabela *@
+    <script>
+        document.getElementById('mostrarSelectUm').addEventListener('click', function () {
+            var select = document.getElementById('seletorLinhaUm');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('seletorLinhaUm').addEventListener('change', function () {
+            if (this.value) {
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+
+    @* Scripts para a linha dois da tabela *@
+    <script>
+        document.getElementById('mostrarSelectDois').addEventListener('click', function () {
+            var select = document.getElementById('seletorLinhaDois');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('seletorLinhaDois').addEventListener('change', function () {
+            if (this.value) {
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+
+    @* Scripts para a linha três da tabela *@
+    <script>
+        document.getElementById('mostrarSeletorTres').addEventListener('click', function () {
+            var select = document.getElementById('seletorLinhaTres');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('seletorLinhaTres').addEventListener('change', function () {
+            if (this.value) {
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+
+    @* Scripts para a linha quatro da tabela *@
+    <script>
+        document.getElementById('mostrarSeletorQuatro').addEventListener('click', function () {
+            var select = document.getElementById('seletorLinhaQuatro');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('seletorLinhaQuatro').addEventListener('change', function () {
+            if (this.value) {
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+
+    @* Scripts para a linha cinco da tabela *@
+    <script>
+        document.getElementById('mostrarSeletorCinco').addEventListener('click', function () {
+            var select = document.getElementById('seletorLinhaCinco');
+            select.style.display = 'block';
+        });
+
+        document.getElementById('seletorLinhaCinco').addEventListener('change', function () {
+            if (this.value) {                
+                // Faça algo quando uma opção for selecionada
+                alert('Você selecionou: ' + this.value);
+            }
+        });
+    </script>
+   
+    @* Script para exibir a informação correspondente a quinzena selecionada *@
+    <script>
+        function mostrarDiv(select) {
+            // Oculta todas as divs
+            document.getElementById('div1').style.display = 'none';
+            document.getElementById('div2').style.display = 'none';
+
+            // Exibe a div correspondente à opção selecionada
+            var valor = select.value;
+            if (valor == '1') {
+                document.getElementById('div1').style.display = 'block';
+                document.getElementById('valorDiv1').textContent = valor;
+            } else if (valor == '2') {
+                document.getElementById('div2').style.display = 'block';
+                document.getElementById('valorDiv2').textContent = valor;
+            }
+        }
+    </script>
+}
+
+@* Implementação para calendário dinâmico *@
+@*
+    <select id="calendario">
+
+     @foreach (Quinzenas registro in Model)
+     {
+      <option value=>@registro.Quinzena</option>
+     }
+
+     </select>
+*@
 
 

@@ -15,6 +15,14 @@ namespace MyTea.Controllers
 
         public IActionResult Index()
         {
+           
+            return View();
+
+        }
+
+        /*
+        public IActionResult Index()
+        {
             var feriado = new Horas
             {
                 Feriado = true, // condicional para criar uma linha na tabela quando existe feriado no mês
@@ -24,7 +32,7 @@ namespace MyTea.Controllers
 
             return View(feriado);
             
-        }
+        }*/
 
         /*
         [HttpPost]
@@ -42,8 +50,7 @@ namespace MyTea.Controllers
             }
         }
 
-        */
-
+               
         [HttpPost]
         public ActionResult CalcularHoras(int valor1, int valor2)
         {
@@ -64,7 +71,7 @@ namespace MyTea.Controllers
                 validacaoHoras.MensagemErroHorasDia = false;
             }
             return View("Index", validacaoHoras);
-        }
+        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

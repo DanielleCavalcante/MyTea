@@ -1,7 +1,19 @@
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using MyTea.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<DataService>();
+builder.Services.AddScoped<FuncionarioService>();
+builder.Services.AddScoped<DepartamentoService>();
+builder.Services.AddScoped<LancamentoHorasService>();
+builder.Services.AddScoped<NivelAcessoService>();
+builder.Services.AddScoped<WBSService>();
 
 var app = builder.Build();
 

@@ -1,27 +1,150 @@
 ﻿@model IEnumerable<Departamento>
 
-@* Tabela para exibir dados do Departamento *@
+@* Partial View de exibição de navbar *@
 
-<p class="mt-5 mb-2">Lista de Departamentos cadastrados:</p>
+<partial name="_Navbar" model="Model" />﻿
 
-<div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead class="cabeçalho-tabela">
-            <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Departamento</th>                
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @foreach (var item in Model)
-                {
+@{
+    ViewData["Title"] = "Departamento";
+}
+    
+    <div class="container my-5 px-0">
+        <div class="row">
+            <div class="col-md-9 col-12">
+                <h3 class="my-2">Buscar Departamento</h3>
+                <p class="mb-4">Busque um departamento por seu nome ou código</p>
+                <div class="row mt-3">
+                    <div class="input mb-3 col-4 conteudo-input">
+                        <input type="text" class="form-control" placeholder="Informe um nome ou código">
+                    </div>
+                    <div class="col-8">
+                        <button type="button" class="btn botao-padrao">Buscar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-12 d-flex justify-content-end">
+                <div class="col-8 my-3 ">
+                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-cadastrar-departamentos">Cadastrar Departamento</button>
+                </div>
+            </div>
+    </div>
+
+    @* Tabela para exibir dados do Departamento *@
+
+    <p class="mt-5 mb-2">Lista de Departamentos cadastrados:</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="cabeçalho-tabela">
                 <tr>
-                    <td readonly>@item.Depto_Id</td>
-                    <td>@item.Depto_Nome</td>                  
+                    <th scope="col">Código</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col" colspan="2"></th>
                 </tr>
-                }
-            </tr>            
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td readonly>@item.Depto_Id</td>
+                        <td>@item.Depto_Nome</td>
+                        <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                            <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-departamentos">Editar</button>
+                            <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-departamentos">Excluir</button>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+    @*
+    FUNÇÃO CADASTRAR
+    Modal de exibição após pressionar o botão cadastrar novo departamento
+    *@
+
+    <div class="modal fade" id="botao-cadastrar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Departamento</h1>
+                </div>
+                <div class="modal-body">
+                    <label class="labels mb-2">Nome Departamento</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*
+    FUNÇÃO EDITAR
+    Modal de exibição após pressionar 0 botão editar novo departamento
+    *@
+
+    <div class="modal fade" id="botao-editar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Departamento</h1>
+                </div>
+                <div class="modal-body">
+                    <label class="labels mb-2">Nome Departamento</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*
+
+    FUNÇÃO EXCLUIR
+    Modal de exibição após pressionar o botão excluir de novo departamento *@
+
+    <div class="modal fade" id="botao-excluir-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Departamento</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger text-center fw-bold" role="alert">
+                        Atenção!
+                        <p class="fw-normal">Você deseja realmente excluir este departamento?</p>
+                    </div>
+                    <table class="table mt-5 table-striped ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Departamento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Tecnologia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -6,6 +6,7 @@ namespace MyTea.Services
     {
         private HttpClient _httpClient;
 
+        // construtor
         public FuncionarioService(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -16,8 +17,7 @@ namespace MyTea.Services
 
         /*  IMPLEMENTAÇÃO DOS ACESSOS AOS ENDPOINTS DA API */
 
-        // Read - todos os registros
-
+        // READ - todos os registros
         public async Task<List<Funcionario>> GetFuncAsync()
         {
             var apiResposta = await _httpClient.GetFromJsonAsync<List<Funcionario>>($"/api/Funcionario/TodosOsRegistros/GetAll");
@@ -25,7 +25,7 @@ namespace MyTea.Services
             return apiResposta;
         }
 
-        // Read - um registro
+        // READ - um registro
         public async Task<Funcionario> GetFuncByIdAsync(int id)
         {
             var apiResposta = await _httpClient.GetFromJsonAsync<Funcionario>($"/api/Funcionario/RegistroUnico/GetOne/{id}");
@@ -33,7 +33,7 @@ namespace MyTea.Services
             return apiResposta;
         }
 
-        // Create
+        // CREATE
         public async Task<Funcionario> AddFuncAsync(Funcionario func)
         {
             var apiResposta = await _httpClient.PostAsJsonAsync<Funcionario>($"/api/Funcionario/InserirRegistro/criarRegistro", func);
@@ -44,7 +44,7 @@ namespace MyTea.Services
 
         }
 
-        // Update
+        // UPDATE
         public async Task<Funcionario> UpdateFuncAsync(int id, Funcionario func)
         {
             var apiResposta = await _httpClient.PutAsJsonAsync<Funcionario>($"/api/Funcionario/AlterarRegistro/atualizarRegistro/{id}", func);
@@ -54,7 +54,7 @@ namespace MyTea.Services
             return await apiResposta.Content.ReadFromJsonAsync<Funcionario>();
         }
 
-        // Delete
+        // DELETE
         public async Task DeleteFuncAsync(int id)
         {
             var apiResposta = await _httpClient.DeleteAsync($"/api/Funcionario/ExcluirRegistro/excluirRegistro/{id}");

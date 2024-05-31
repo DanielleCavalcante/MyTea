@@ -5,29 +5,33 @@
 <partial name="_Navbar" model="Model" />﻿
 
 @{
-    ViewData["Title"] = "Funcionário";
+    ViewData["Title"] = "Funcionários";
 }
 
-@* Tabela para exibir dados do Funcionário *@
-
-
+@* Botão de busca do funcionário *@
 <div class="container my-5 px-0">
     <div class="row">
         <div class="col-md-9 col-12">
             <h3 class="my-2">Buscar Funcionário</h3>
             <p class="mb-4">Busque um funcionário por seu nome ou código</p>
-            <div class="row mt-3">
-                <div class="input mb-3 col-4">
-                    <input type="text" class="form-control conteudo-input" placeholder="Informe um nome ou código">
+            <form method="post">
+                <div class="row mt-3">
+                    <div class="input mb-3 col-4">
+                        <input for="Func_Id" name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome ou código">
+                    </div>
+                    <div class="col-8">
+                        <button asp-controller="Funcionario" asp-action="BuscarFunc" type="submit" class="btn botao-padrao">Buscar</button>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <button type="button" class="btn botao-padrao">Buscar</button>
-                </div>
-            </div>
+            </form>
+
         </div>
+
         <div class="col-md-3 col-8 d-flex justify-content-end">
             <div class="col-8 my-3 ">
-                <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-cadastrar-funcionarios">Cadastrar Funcionário</button>
+                <form asp-controller="Funcionario" asp-action="CriarFunc" method="post">
+                    <button type="submit" class="btn botao-padrao">Cadastrar Funcionário</button>
+                </form>
             </div>
         </div>
     </div>
@@ -49,347 +53,107 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Maria</td>
-                    <td>dos Santos</td>
-                    <td>Tecnologia</td>
-                    <td colspan="2">
-                        <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                    </td>
-                    <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                        <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
-                        <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>João</td>
-                    <td>Alves</td>
-                    <td>Recursos Humanos</td>
-                    <td colspan="2">
-                        <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                    </td>
-                    <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                        <button type="button" class="btn botao-padrao">Editar</button>
-                        <button type="button" class="btn botao-excluir">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Felipe</td>
-                    <td>Ferraz</td>
-                    <td>Contabilidade</td>
-                    <td colspan="2">
-                        <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                    </td>
-                    <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                        <button type="button" class="btn botao-padrao">Editar</button>
-                        <button type="button" class="btn botao-excluir">Excluir</button>
-                    </td>
-                </tr>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <th scope="row" readonly>@item.Func_Id</th>
+                        <td>@item.Func_Nome</td>
+                        <td>@item.Func_Sobrenome</td>
+                        <td>@item.Depto_Id</td>
+
+                        @*Botão de Ver Mais - direcionará para o modal VerMais*@
+                        <td colspan="2">
+                            <form method="post">
+                                <input type="hidden" value="@item.Func_Id" name="id" />
+                                <button asp-action="VerMaisFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                            </form>
+                        </td>
+                        <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                            <form method="post">
+                                <input type="hidden" name="id" />
+                                <button asp-action="EditarFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
+                            </form>
+                            <form asp-action="ExcluirFunc" method="post">
+                                <input type="hidden" value="@item.Func_Id" name="id" />
+                                <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 
+    @*colar aqui novamente se der errado*@ 
     @* Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais *@
-
-    <div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header mb-3">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ver mais</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    @*Tabela de informações, dentro do Model*@
-                    <table class="table table table-bordered">
-                        <thead class="thead-cad-func">
-                        <th colspan="2">Informações do Funcionário</th>
-                        </thead>
-                        <tbody class="tbody-cad-func">
-                            <tr>
-                                <th>Nome</th>
-                                <td>Nome..</td>
-                            </tr>
-                            <tr>
-                                <th>Sobrenome</th>
-                                <td>Sobrenome...</td>
-                            </tr>
-                            <tr>
-                                <th>Departamento</th>
-                                <td>Departamento...</td>
-                            </tr>
-                            <tr>
-                                <th>Data de Nascimento</th>
-                                <td>Data de Nascimento...</td>
-                            </tr>
-                            <tr>
-                                <th>Gênero</th>
-                                <td>Gênero...</td>
-                            </tr>
-                            <tr>
-                                <th>Carga Horária</th>
-                                <td>Carga Horária...</td>
-                            </tr>
-                            <tr>
-                                <th>Data da admissão</th>
-                                <td>Data da admissão...</td>
-                            </tr>
-                            <tr>
-                                <th>Data de desligamento</th>
-                                <td>Data de desligamento...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
-
     @* Modal de exibição após pressionar o botão cadastrar novo funcionário *@
 
-    <div class="modal fade" id="botao-cadastrar-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header mb-3">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Funcionário</h1>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Nome *</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Sobrenome *</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Data Nascimento *</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 19/05/2000">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Gênero</label>
-                    <div class="input-group mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault">
-                            <label class="form-check-label label-radio" id="label-radio" for="RadioFeminino">
-                                Feminino
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault">
-                            <label class="form-check-label label-radio" id="label-radio" for="RadioMasculino">
-                                Masculino
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault">
-                            <label class="form-check-label" id="label-radio" for="RadioOutro">
-                                Outro
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Data Admissão *</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Carga Horária *</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Departamento *</label>
-                    <div class="input-group mb-3">
-                        <select class="seletor-funcionario form-select form-select-sm form-control">
-                            <option selected>Selecione um departamento</option>
-                            <option value="Tecnologia">Tecnologia</option>
-                            <option value="Recursos Humanos">Recursos Humanos</option>
-                            <option value="Contabilidade">Contabilidade</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Nível de Acesso *</label>
-                    <div class="input-group mb-3">
-                        <select class="seletor-funcionario form-select form-select-sm form-control">
-                            <option selected>Selecione um nível de acesso</option>
-                            <option value="1 - Administrador">1 - Administrador</option>
-                            <option value="2 - Gerente">2 - Gerente</option>
-                            <option value="3 - Funcionário">3 - Funcionário</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     @* Modal de exibição após pressionar botão editar funcionário *@
-    <div class="modal fade" id="botao-editar-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header mb-3">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Funcionário</h1>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Nome</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Sobrenome</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Data Nascimento</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 19/05/2000">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Gênero</label>
-                    <div class="input-group mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault">
-                            <label class="form-check-label label-radio" id="label-radio" for="RadioFeminino">
-                                Feminino
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault">
-                            <label class="form-check-label label-radio" id="label-radio" for="RadioMasculino">
-                                Masculino
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault">
-                            <label class="form-check-label" id="label-radio" for="RadioOutro">
-                                Outro
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Data Admissão</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Carga Horária</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Departamento</label>
-                    <div class="input-group mb-3">
-                        <select class="seletor-funcionario form-select form-select-sm form-control">
-                            <option selected>Selecione um departamento</option>
-                            <option value="Tecnologia">Tecnologia</option>
-                            <option value="Recursos Humanos">Recursos Humanos</option>
-                            <option value="Contabilidade">Contabilidade</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">Nível de Acesso</label>
-                    <div class="input-group mb-3">
-                        <select class="seletor-funcionario form-select form-select-sm form-control">
-                            <option selected>Selecione um nível de acesso</option>
-                            <option value="1 - Administrador">1 - Administrador</option>
-                            <option value="2 - Gerente">2 - Gerente</option>
-                            <option value="3 - Funcionário">3 - Funcionário</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn botao-padrao">Salvar alterações</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     @* Modal de exibição após pressionar o botão excluir funcionário *@
 
     <div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Funcionário</h1>
+                <div class="modal-content">
+                    <form asp-action="ExcluirFunc" method="post">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Funcionário</h1>
                 </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger text-center fw-bold" role="alert">
-                        Atenção!
-                        <p class="fw-normal">Você deseja realmente excluir este funcionário?</p>
-                    </div>
                     <div class="modal-body">
-                        <table class="table table-bordered">
-                            <thead class="thead-cad-func">
-                            <th colspan="2">Informações do Funcionário</th>
-                            </thead>
-                            <tbody class="tbody-cad-func">
-                                <tr>
-                                    <th>Nome</th>
-                                    <td>Nome..</td>
-                                </tr>
-                                <tr>
-                                    <th>Sobrenome</th>
-                                    <td>Sobrenome...</td>
-                                </tr>
-                                <tr>
-                                    <th>Departamento</th>
-                                    <td>Departamento...</td>
-                                </tr>
-                                <tr>
-                                    <th>Data de Nascimento</th>
-                                    <td>Data de Nascimento...</td>
-                                </tr>
-                                <tr>
-                                    <th>Gênero</th>
-                                    <td>Gênero...</td>
-                                </tr>
-                                <tr>
-                                    <th>Carga Horária</th>
-                                    <td>Carga Horária...</td>
-                                </tr>
-                                <tr>
-                                    <th>Data da admissão</th>
-                                    <td>Data da admissão...</td>
-                                </tr>
-                                <tr>
-                                    <th>Data de desligamento</th>
-                                    <td>Data de desligamento...</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="alert alert-danger text-center fw-bold" role="alert">
+                            Atenção!
+                            <p class="fw-normal">Você deseja realmente excluir este funcionário?</p>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-bordered">
+                                <thead class="thead-cad-func">
+                                <th colspan="2">Informações do Funcionário</th>
+                                </thead>
+                                <tbody class="tbody-cad-func">
+                                    <tr>
+                                        <th>Nome</th>
+                                        <td name="Func_Name"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sobrenome</th>
+                                        <td>Sobrenome...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Departamento</th>
+                                        <td>Departamento...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Data de Nascimento</th>
+                                        <td>Data de Nascimento...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Gênero</th>
+                                        <td>Gênero...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Carga Horária</th>
+                                        <td>Carga Horária...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Data da admissão</th>
+                                        <td>Data da admissão...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Data de desligamento</th>
+                                        <td>Data de desligamento...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>

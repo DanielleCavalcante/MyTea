@@ -1,0 +1,61 @@
+﻿@*
+    estabelecer a comunicação entre model e view
+*@
+
+@model Funcionario
+
+@{
+    ViewData["Title"] = "Resultados da Busca";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Func_Id"></label>
+        <input name="id" class="form-controll" />
+    </div>
+</form>
+
+@* estrutura html para exibição do registro selecionado*@
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" readonly>@Model.Func_Id</th>
+                <td>@Model.Func_Nome</td>
+                <td>@Model.Func_Sobrenome</td>
+                <td>@Model.Depto_Id</td>
+
+                @*Botão de Ver Mais - direcionará para o modal VerMais*@
+                <td colspan="2">
+                    <form method="post">
+                        <input type="hidden" value="@Model.Func_Id" name="id" />
+                        <button asp-action="VerMaisFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                    </form>
+                </td>
+                <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                    <form method="post">
+                        <input type="hidden" name="id" />
+                        <button asp-action="EditarFunc" asp-route-id="@Model.Func_Id" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
+                    </form>
+                    <form asp-action="ExcluirFunc" method="post">
+                        <input type="hidden" value="@Model.Func_Id" name="id" />
+                        <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
+                    </form>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

@@ -34,6 +34,6 @@ namespace MyTea.Controllers
                     "dados de estudantes. Tente novamente.");
                 return View(new List<Departamento>());
             }
-        }
+        }  
     }
 }

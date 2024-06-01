@@ -17,8 +17,18 @@
             <form method="post">
                 <div class="row mt-3">
                     <div class="input mb-3 col-4">
-                        <input for="Func_Id" name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome ou código">
+                        <input @*for="Func_Id"*@ name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome ou código">
                     </div>
+
+                    <div class="input mb-3 col-4">
+                        <input name="nome" type="text" class="form-control conteudo-input" placeholder="Informe um nome">
+                    </div>
+
+                    <div class="input mb-3 col-4">
+                        <input name="departamento" type="text" class="form-control conteudo-input" placeholder="Informe um departamento">
+                    </div>
+
+
                     <div class="col-8">
                         <button asp-controller="Funcionario" asp-action="BuscarFunc" type="submit" class="btn botao-padrao">Buscar</button>
                     </div>
@@ -26,7 +36,7 @@
             </form>
 
         </div>
-
+        @*Botão de cadastrar*@
         <div class="col-md-3 col-8 d-flex justify-content-end">
             <div class="col-8 my-3 ">
                 <form asp-controller="Funcionario" asp-action="CriarFunc" method="post">
@@ -69,10 +79,12 @@
                             </form>
                         </td>
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                            <form method="post">
+                            @*Botão de Editar*@
+                            <form asp-action="EditarFunc" method="post">
                                 <input type="hidden" name="id" />
-                                <button asp-action="EditarFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
+                                <button type="submit" class="btn botao-padrao" data-bs-target="#botao-editar-funcionarios">Editar</button>
                             </form>
+                            @*Botão de Excluir*@
                             <form asp-action="ExcluirFunc" method="post">
                                 <input type="hidden" value="@item.Func_Id" name="id" />
                                 <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>

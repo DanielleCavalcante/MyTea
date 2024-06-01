@@ -2,7 +2,7 @@
     Estabelecer relação entre view e model
 *@
 
-@model Funcionario
+@model ViewModelListar
 
 @{
     ViewData["Title"] = "Atualização de registro de funcionário";
@@ -12,7 +12,12 @@
     <div class="container">
         <h1 class="titulo-view-crud" id="staticBackdropLabel">Editar Funcionário</h1>
 
-            <input type="hidden" asp-for="Func_Id" />
+            <div class="modal-body modal-cadastrar-func">
+                <label asp-for="Func_Id" class="labels mb-2">Código *</label>
+                <div class="input-group mb-3">
+                    <input readonly asp-for="Func_Id" type="text" class="form-control conteudo-input">
+                </div>
+            </div>
 
             <div class="modal-body modal-cadastrar-func">
                 <label asp-for="Func_Nome" class="labels mb-2">Nome *</label>
@@ -69,16 +74,18 @@
             <div class="modal-body modal-cadastrar-func">
                 <label asp-for="Depto_Id" class="labels mb-2">Departamento *</label>
                 <div class="input-group mb-3">
-                    <select class="seletor-funcionario form-select form-select-sm form-control">
-                        <option selected>Selecione um departamento</option>
-                        <option value="Tecnologia">Tecnologia</option>
-                        <option value="Recursos Humanos">Recursos Humanos</option>
-                        <option value="Contabilidade">Contabilidade</option>
+                    <select asp-for="Depto_Id" class="seletor-funcionario form-select form-select-sm form-control">
+                        <option value="">Selecione um departamento</option>
+                        @foreach (var depto in Model.Departamentos)
+                        {
+                            <option value="@depto.Depto_Id">@depto.Depto_Nome</option>
+                        }
                     </select>
                 </div>
             </div>
+
             <div class="modal-body modal-cadastrar-func">
-                <label class="labels mb-2">Nível de Acesso *</label>
+                <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso *</label>
                 <div class="input-group mb-3">
                     <select class="seletor-funcionario form-select form-select-sm form-control">
                         <option selected>Selecione um nível de acesso</option>
@@ -91,6 +98,6 @@
             <div class="modal-footer">
                 <button asp-area="" asp-controller="Funcionario" asp-action="Index" type="submit" class="btn botao-cancelar">Cancelar</button>
                 <button asp-action="CriarFunc" type="submit" value="Inserir" class="btn botao-padrao">Salvar</button>
-            </div>
+            </div
     </div>
 </form>

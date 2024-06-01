@@ -1,6 +1,6 @@
 ﻿namespace MyTea.Models
 {
-    public class Funcionario : Departamento
+    public class Funcionario
     {
         public int Func_Id { get; set; }
         public string? Func_Nome { get; set; }

@@ -9,12 +9,11 @@
         public DateTime? Func_DtDes { get; set; }
         public decimal Func_CH_Est { get; set; }
         public string? Func_Gen { get; set; }
-        public string? Func_Usuario { get; set; }
-        public string? Func_Senha { get; set; }
         public int NAcesso_Id { get; set; }
         public int Depto_Id { get; set; }
 
         // Associações adicionais
         public List<Departamento> Departamento { get; set; }
+        public List<NivelAcesso> NivelAcessos { get; set; }
     }
 }

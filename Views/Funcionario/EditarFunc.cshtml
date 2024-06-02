@@ -2,13 +2,13 @@
     Estabelecer relação entre view e model
 *@
 
-@model ViewModelListar
+@model Funcionario
 
 @{
     ViewData["Title"] = "Atualização de registro de funcionário";
 }
 
-<form asp-action="EditarFunc" method="post">
+<form method="post">
     <div class="container">
         <h1 class="titulo-view-crud" id="staticBackdropLabel">Editar Funcionário</h1>
 
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-        <div class="modal-body modal-cadastrar-func">
+        @*<div class="modal-body modal-cadastrar-func">
             <label class="labels mb-2">Gênero</label>
             <div class="input-group mb-3">
                 <div class="form-check">
@@ -55,7 +55,7 @@
                     </label>
                 </div>
             </div>
-        </div>
+        </div>*@
 
             <div class="modal-body modal-cadastrar-func">
                 <label asp-for="Func_DtAdm" class="labels mb-2">Data Admissão *</label>
@@ -74,12 +74,23 @@
             <div class="modal-body modal-cadastrar-func">
                 <label asp-for="Depto_Id" class="labels mb-2">Departamento *</label>
                 <div class="input-group mb-3">
+                    <input asp-for="Depto_Id" type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
+                </div>
+            </div>
+
+            <div class="modal-body modal-cadastrar-func">
+                <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso *</label>
+                <div class="input-group mb-3">
+                    <input asp-for="NAcesso_Id" type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
+                </div>
+            </div>
+
+            @*<div class="modal-body modal-cadastrar-func">
+                <label asp-for="Depto_Id" class="labels mb-2">Departamento *</label>
+                <div class="input-group mb-3">
                     <select asp-for="Depto_Id" class="seletor-funcionario form-select form-select-sm form-control">
                         <option value="">Selecione um departamento</option>
-                        @foreach (var depto in Model.Departamentos)
-                        {
-                            <option value="@depto.Depto_Id">@depto.Depto_Nome</option>
-                        }
+                       
                     </select>
                 </div>
             </div>
@@ -94,10 +105,10 @@
                         <option value="3 - Funcionário">3 - Funcionário</option>
                     </select>
                 </div>
-            </div>
+            </div>*@
             <div class="modal-footer">
                 <button asp-area="" asp-controller="Funcionario" asp-action="Index" type="submit" class="btn botao-cancelar">Cancelar</button>
-                <button asp-action="CriarFunc" type="submit" value="Inserir" class="btn botao-padrao">Salvar</button>
+                <button type="submit" value="Inserir" class="btn botao-padrao">Salvar</button>
             </div
     </div>
 </form>

@@ -11,7 +11,6 @@
 <form method="post">
     <div class="container">
         <h1 class="titulo-view-crud" id="staticBackdropLabel">Ver Mais Funcionário</h1>
-        <form asp-action="VerMaisFunc" method="post">
         <div class="modal-body modal-cadastrar-func ">
                 <label asp-for="Func_Id" class="labels mb-2">Código:</label>
             <div class="input-group mb-3">
@@ -71,7 +70,6 @@
         <div class="modal-footer">
             <button asp-area="" asp-controller="Funcionario" asp-action="Index" type="submit" class="btn botao-cancelar">Cancelar</button>
         </div>
-        </form>
     </div>
 
 </form>

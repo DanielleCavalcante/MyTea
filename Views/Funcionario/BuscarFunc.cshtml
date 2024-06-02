@@ -7,54 +7,57 @@
 @{
     ViewData["Title"] = "Resultados da Busca:";
 }
+<form method="post">
+    <div class="container">
+        <button asp-area="" asp-controller="Funcionario" asp-action="Index" type="submit" class="btn-close" aria-label="Close"></button>
+        <p class="mt-5 mb-2">Resultados da busca: </p
 
-<div class="container">
-    <p class="mt-5 mb-2">Resultados da busca: </p
+        @* estrutura html para exibição do registro selecionado*@
 
-    @* estrutura html para exibição do registro selecionado*@
+        @if (Model != null)
+        {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="cabeçalho-tabela">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Departamento</th>
+                        <th scope="col" colspan="2"></th>
+                        <th scope="col" colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" readonly>@Model.Func_Id</th>
+                        <td>@Model.Func_Nome</td>
+                        <td>@Model.Func_Sobrenome</td>
+                        <td>@Model.Depto_Id</td>
 
-    @if (Model != null)
-    {
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead class="cabeçalho-tabela">
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Departamento</th>
-                    <th scope="col" colspan="2"></th>
-                    <th scope="col" colspan="2"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row" readonly>@Model.Func_Id</th>
-                    <td>@Model.Func_Nome</td>
-                    <td>@Model.Func_Sobrenome</td>
-                    <td>@Model.Depto_Id</td>
+                        @*Botão de Ver Mais - direcionará para o modal VerMais*@
+                        <td colspan="2">
+                            <form method="post">
+                                <input type="hidden" value="@Model.Func_Id" name="id" />
+                                <button asp-action="VerMaisFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                            </form>
+                        </td>
+                        <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                            <form method="post">
+                                <input type="hidden" name="id" />
+                                <button asp-action="EditarFunc" asp-route-id="@Model.Func_Id" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
+                            </form>
+                            <form asp-action="ExcluirFunc" method="post">
+                                <input type="hidden" value="@Model.Func_Id" name="id" />
+                                <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
+                            </form>
 
-                    @*Botão de Ver Mais - direcionará para o modal VerMais*@
-                    <td colspan="2">
-                        <form method="post">
-                            <input type="hidden" value="@Model.Func_Id" name="id" />
-                            <button asp-action="VerMaisFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
-                        </form>
-                    </td>
-                    <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                        <form method="post">
-                            <input type="hidden" name="id" />
-                            <button asp-action="EditarFunc" asp-route-id="@Model.Func_Id" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
-                        </form>
-                        <form asp-action="ExcluirFunc" method="post">
-                            <input type="hidden" value="@Model.Func_Id" name="id" />
-                            <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
-                        </form>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-     </div>
-    }
-</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+        }
+        </>
+    </div>
+</form>

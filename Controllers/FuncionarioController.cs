@@ -63,33 +63,31 @@
                 {
                     return NotFound();
                 }
+
                 return View(funcionario);
             }
 
-        // 3° tarefa assincrona CRUD: Inserção - Create
-        public ViewResult CriarFunc() => View();
+            // 3° tarefa assincrona CRUD: Inserção - Create
+            public ViewResult CriarFunc() => View();
 
-        // sobrecarga do método/action
-        [HttpPost]
-        public async Task<IActionResult> CriarFunc(ViewModelListar funcionario)
-        {
-            if (ModelState.IsValid)
+            // sobrecarga do método/action
+            [HttpPost]
+            public async Task<IActionResult> AddFunc(Funcionario funcionario)
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    await _funcionarioService.AddFuncAsync(funcionario.Funcionario);
-                    return RedirectToAction(nameof(Index));
+                    try
+                    {
+                        await _funcionarioService.AddFuncAsync(funcionario);
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Erro ao criar o registro de curso.");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError(string.Empty, "Erro ao criar o registro de curso.");
-                }
+                return View(funcionario);
             }
-            return View(funcionario);
-        }
-     
-
-
 
         /*//METODO DE LISTAGEM DE DEPARTAMENTOS - DROPDOWN
         public async Task<IActionResult> ListarDepartamentos()
@@ -109,15 +107,18 @@
         }*/
 
 
-        // 4° tarefa assincrona CRUD: Update
-        public async Task<IActionResult> EditarFunc(int id)
+            // 4° tarefa assincrona CRUD: Update
+            public async Task<IActionResult> EditarFunc(int id)
             {
-                // criar a requisição de seleção do registro
+                // estabelecer a requisição para recuperar o registro
                 var funcionario = await _funcionarioService.GetFuncByIdAsync(id);
+
+                // verificar se a requisição trouxe algum resultado
                 if (funcionario == null)
                 {
                     return NotFound();
                 }
+
                 return View(funcionario);
             }
 

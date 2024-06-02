@@ -231,6 +231,13 @@ td, tr {
     color: var(--cinza);
 }
 
+.btn-close {
+    position: fixed;
+    right: 120px;
+    top: 50px;
+    cursor: pointer;
+}
+
 /*Titulo Views CRUD*/
 .titulo-view-crud {
     color: var(--primaria);

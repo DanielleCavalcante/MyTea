@@ -2,7 +2,7 @@
    estabelecer relação entre model e view
 *@
 
-@model MyTea.Models.ViewModelListar
+@model Funcionario
 
 @{
     ViewData["Title"] = "Criar registros de Funcionários";
@@ -12,18 +12,18 @@
 <div class="container">
     <h1 class="titulo-view-crud" id="staticBackdropLabel">Cadastrar Funcionário</h1>
 
-    <form asp-action="CriarFunc" method="post">
+    <form method="post">
         <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Funcionario.Func_Nome" class="labels mb-2">Nome *</label>
+            <label asp-for="Func_Nome" class="labels mb-2">Nome *</label>
             <div class="input-group mb-3">
-                <input asp-for="Funcionario.Func_Nome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
+                <input asp-for="Func_Nome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
             </div>
         </div>
 
         <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Funcionario.Func_Sobrenome" class="labels mb-2">Sobrenome *</label>
+            <label asp-for="Func_Sobrenome" class="labels mb-2">Sobrenome *</label>
             <div class="input-group mb-3">
-                <input asp-for="Funcionario.Func_Sobrenome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
+                <input asp-for="Func_Sobrenome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
             </div>
         </div>
 
@@ -32,7 +32,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control conteudo-input" placeholder="Exemplo: 19/05/2000">
             </div>
-        </div>*@
+        </div>
 
         <div class="modal-body modal-cadastrar-func">
             <label class="labels mb-2">Gênero</label>
@@ -56,47 +56,46 @@
                     </label>
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Funcionario.Func_DtAdm" class="labels mb-2">Data Admissão *</label>
+            <label asp-for="Func_Gen" class="labels mb-2">Gênero *</label>
             <div class="input-group mb-3">
-                <input asp-for="Funcionario.Func_DtAdm" type="date" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Funcionario.Func_CH_Est" class="labels mb-2">Carga Horária *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Funcionario.Func_CH_Est" type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
+                <input asp-for="Func_Gen" type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
             </div>
         </div>
 
         <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Funcionario.Depto_Id" class="labels mb-2">Departamento *</label>
+            <label asp-for="Func_DtAdm" class="labels mb-2">Data Admissão *</label>
             <div class="input-group mb-3">
-                <select asp-for="Funcionario.Depto_Id" class="seletor-funcionario form-select form-select-sm form-control">
-                    @foreach (var depto in Model.listarDepto)
-                    {
-                        <option value="@depto.Depto_Id">@depto.Depto_Nome</option>
-                    }
-                </select>
+                <input asp-for="Func_DtAdm" type="date" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
             </div>
         </div>
+
         <div class="modal-body modal-cadastrar-func">
-            <label class="labels mb-2">Nível de Acesso *</label>
+            <label asp-for="Func_CH_Est" class="labels mb-2">Carga Horária *</label>
             <div class="input-group mb-3">
-                <select class="seletor-funcionario form-select form-select-sm form-control">
-                    <option selected>Selecione um nível de acesso</option>
-                    <option value="1 - Administrador">1 - Administrador</option>
-                    <option value="2 - Gerente">2 - Gerente</option>
-                    <option value="3 - Funcionário">3 - Funcionário</option>
-                </select>
+                <input asp-for="Func_CH_Est" type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
             </div>
         </div>
+
+        <div class="modal-body modal-cadastrar-func">
+            <label asp-for="Depto_Id" class="labels mb-2">Departamento *</label>
+            <div class="input-group mb-3">
+                <input asp-for="Depto_Id" type="text" class="form-control conteudo-input" placeholder="Exemplo: 1">
+            </div>
+        </div>
+
+        <div class="modal-body modal-cadastrar-func">
+            <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso *</label>
+            <div class="input-group mb-3">
+                <input asp-for="NAcesso_Id" type="text" class="form-control conteudo-input" placeholder="Exemplo: 3">
+            </div>
+        </div>
+
         <div class="modal-footer">
             <button asp-area="" asp-controller="Funcionario" asp-action="Index"  type="submit" class="btn botao-cancelar">Cancelar</button>
-            <button asp-action="CriarFunc" type="submit" value="Inserir" class="btn botao-padrao">Salvar</button>
+            <button type="submit" value="Inserir" class="btn botao-padrao">Salvar</button>
         </div>
     </form>
 </div>

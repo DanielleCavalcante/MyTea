@@ -23,8 +23,8 @@
             </div>
         </div>
         <div class="col-md-3 col-8 d-flex justify-content-end">
-            <div class="col-8 my-3 ">
-                <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-cadastrar-wbs">Cadastrar <br />WBS</button>
+            <div class="col-8 my-3 ">  
+                <button type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-cadastrar-wbs">Cadastrar WBS</button> 
             </div>
         </div>
     </div>
@@ -44,17 +44,28 @@
                     <th scope="col" colspan="2">Chargeability</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>A3019201</td>
-                    <td>Treinamento</td>
-                    <td>Sim</td>
-                    <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                        <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-wbs">Editar</button>
-                        <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-wbs">Excluir</button>
-                    </td>
-                </tr>
+            <tbody> 
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td readonly>@item.WBS_Id</td>
+                            <td>@item.WBS_Codigo</td>
+                            <td>@item.WBS_Descricao</td>
+                        @if (@item.WBS_Chargeability)
+                        {
+                            <td>Sim</td>
+                        }
+                        else
+                        {
+                            <td>Não</td>
+                        }
+                            
+                            <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+                            <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-wbs">Editar</button>
+                            <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-wbs">Excluir</button>
+                            </td>
+                        </tr>
+                    }
             </tbody>
         </table>
     </div>
@@ -62,45 +73,50 @@
     FUNÇÃO CADASTRAR
     Modal de exibição após pressionar o botão cadastrar nova WBS
     *@
-
     <div class="modal fade" id="botao-cadastrar-wbs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mb-3">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar WBS</h1>
                 </div>
-                <div class="modal-body modal-cadastrar-func">
-                    <label class="labels mb-2">WBS</label>
+                <form asp-action="AddWBS" method="post">
+                <div class="modal-body modal-cadastrar-func form-group">
+                    <label class="labels mb-2 form-control">WBS</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
+                        <input type="text" class="form-control conteudo-input" name="WBS_Codigo" placeholder="Exemplo: A301929">
                     </div>
+
                 </div>
-                <div class="modal-body modal-cadastrar-func">
+                <div class="modal-body modal-cadastrar-func form-group">
                     <label class="labels mb-2">Descrição</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Treinamento">
+                        <input type="text" class="form-control conteudo-input" name="WBS_Descricao" placeholder="Exemplo: Treinamento">
                     </div>
                 </div>
-                <div class="modal-body modal-cadastrar-func">
+                <div class="modal-body modal-cadastrar-func form-group">
                     <label class="labels mb-2">Chargeability</label>
-                    <div class="input-group mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" value=1>
+                    <div class="input-group mb-3" >
+                            <div class="form-check form-control">
+                            <input class="form-check-input" type="radio" name="WBS_Chargeability" value=1>
                             <label class="form-check-label" id="label-radio">Sim</label>
                         </div>
-                        <div>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" value=0>
+                            <div class="form-check form-control">
+                                <input class="form-check-input" type="radio" name="WBS_Chargeability" value=0>
                             <label class="form-check-label" id="label-radio">Não</label>
                         </div>
+
                     </div>
                 </div>
-                <div class="modal-footer">
+                
+                <div class="modal-footer form-group">
                     <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                    <button type="submit" class="btn botao-padrao">Salvar alterações</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+    
    
     @*
     FUNÇÃO EDITAR
@@ -113,35 +129,40 @@
                 <div class="modal-header mb-3">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar WBS</h1>
                 </div>
-                <div class="modal-body modal-cadastrar-func">
+                <form asp-action="UpdateWBS" method="post">
+                <div class="modal-body modal-cadastrar-func form-group">
+                    <input name="WBS_Id" type="hidden" class="form-control" />
+                </div>
+                <div class="modal-body modal-cadastrar-func form-group">
                     <label class="labels mb-2">WBS</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: A301929">
+                        <input type="text" class="form-control conteudo-input" name="WBS_Codigo" placeholder="Exemplo: A301929">
                     </div>
                 </div>
-                <div class="modal-body modal-cadastrar-func">
+                <div class="modal-body modal-cadastrar-func form-group">
                     <label class="labels mb-2">Descrição</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Treinamento">
+                        <input type="text" class="form-control conteudo-input" name="WBS_Descricao" placeholder="Exemplo: Treinamento">
                     </div>
                 </div>
-                <div class="modal-body modal-cadastrar-func">
+                <div class="modal-body modal-cadastrar-func form-group">
                     <label class="labels mb-2">Chargeability</label>
                     <div class="input-group mb-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" value=1>
+                            <input class="form-check-input form-control" type="radio" name="WBS_Chargeability" value=1>
                             <label class="form-check-label" id="label-radio">Sim</label>
                         </div>
                         <div>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" value=0>
+                            <input class="form-check-input form-control" type="radio" name="WBS_Chargeability" value=0>
                             <label class="form-check-label" id="label-radio">Não</label>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer form-group">
                     <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn botao-padrao">Salvar alterações</button>
+                    <button type="submit" class="btn botao-padrao">Salvar alterações</button>
                 </div>
+                </form>
             </div>
          </div>
     </div>

@@ -55,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var item in Model)
+                @foreach (var item in Model)
                 {
                     <tr>
                         <th scope="row" readonly>@item.Func_Id</th>
@@ -65,15 +65,16 @@
 
                         @*Botão de Ver Mais*@
                         <td colspan="2">
-                            <form asp-action="VerMaisFunc" method="get">
-                                <input type="hidden" value="@item.Func_Id" name="id"/>
-                                <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                            <form asp-action="VerMaisFunc" method="post">
+                                <input type="hidden" value="@item.Func_Id" name="id" />
+                                <button type="submit" class="btn botao-padrao">Ver mais</button>
+                                @*<button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>*@
                             </form>
                         </td>
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
                             @*Botão de Editar*@
                             <form asp-action="UpdateFunc" method="get">
-                                <input type="hidden" value="@item.Func_Id" name="id"/>
+                                <input type="hidden" value="@item.Func_Id" name="id" />
                                 <button type="submit" class="btn botao-padrao">Editar</button>
                                 @*<a asp-action="UpdateFunc" asp-route-id="@item.Func_Id" class="btn botao-padrao" data-bs-target="#botao-editar-funcionarios">Editar</a>*@
                             </form>
@@ -81,8 +82,8 @@
                             @*Botão de Excluir*@
                             <form asp-action="DeleteFunc" method="post">
                                 <input type="hidden" value="@item.Func_Id" name="id" />
-                                <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
-                                @*<button type="button" class="btn botao-excluir" >Excluir antigo</button>*@
+                                @*<button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>*@
+                                <button type="submit" class="btn botao-excluir" >Excluir</button>
                             </form>
                         </td>
                     </tr>
@@ -92,14 +93,14 @@
     </div>
 
     @* Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais *@
-    <div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
+    @*<div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Ver Mais Funcionário</h1>
                     <button asp-action="Index" type="button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
+
                 <form asp-action="VerMaisFunc" method="post">
                     <div class="modal-body">
                         <div class="modal-body modal-cadastrar-func ">
@@ -161,16 +162,16 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div*@
 
-    
+
     @* Modal de exibição após pressionar o botão cadastrar novo funcionário *@
 
     @* Modal de exibição após pressionar botão editar funcionário *@
-   
+
     @* Modal de exibição após pressionar o botão excluir funcionário *@
 
-    <div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    @*<div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -232,5 +233,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>

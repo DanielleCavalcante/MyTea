@@ -61,5 +61,15 @@ namespace MyTea.Services
 
             apiResposta.EnsureSuccessStatusCode();
         }
+
+        /*
+        // Verificar se o nome de um Departamento já existe
+        public async Task<bool> DeptoNomeExisteAsync(string deptoNome)
+        {
+            var apiResposta = await _httpClient.GetAsync($"/api/Departamento/deptoNomeExiste/{deptoNome}");
+            apiResposta.EnsureSuccessStatusCode();
+            return await apiResposta.Content.ReadFromJsonAsync<bool>();
+        }
+        */
     }
 }

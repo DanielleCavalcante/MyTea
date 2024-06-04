@@ -15,7 +15,7 @@ namespace MyTea.Models
         public string? Func_Sobrenome { get; set; }
 
         [Required(ErrorMessage = "A data de admissão é obrigatória.")]
-        public DateOnly Func_Dt_Adm { get; set; }  // Corrigido nome da propriedade
+        public DateOnly Func_Dt_Adm { get; set; }
 
         public DateOnly Func_Dt_Des { get; set; }
 

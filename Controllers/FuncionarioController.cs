@@ -61,7 +61,7 @@
             }
 
             // CRUD - CREATE
-            public ViewResult CriarFunc() => View();
+            public ViewResult AddFunc() => View();
 
             // sobrecarga do método/action
             [HttpPost]
@@ -83,7 +83,7 @@
             }
 
             // CRUD - UPDATE
-            public async Task<IActionResult> EditarFunc(int id)
+            public async Task<IActionResult> UpdateFunc(int id)
             {
                 // estabelecer a requisição para recuperar o registro
                 var funcionario = await _funcionarioService.GetFuncByIdAsync(id);
@@ -99,7 +99,7 @@
 
             // sobrecarga do método/action
             [HttpPost]
-            public async Task<IActionResult> EditarFunc(int id, Funcionario funcionario)
+            public async Task<IActionResult> UpdateFunc(int id, Funcionario funcionario)
             {
                 if (id != funcionario.Func_Id)
                 {
@@ -113,9 +113,11 @@
                 return View(funcionario);
             }
 
+            public ViewResult DeleteFunc() => View();
+
             // CRUD - DELETE
             [HttpPost]
-            public async Task<IActionResult> ExcluirFunc(int id)
+            public async Task<IActionResult> DeleteFunc(int id)
             {
                 // criar a requisição de seleção do registro para ser excluido
                 var funcionario = await _funcionarioService.GetFuncByIdAsync(id);

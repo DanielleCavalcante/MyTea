@@ -5,27 +5,76 @@
 @model Funcionario
 
 @{
-    ViewData["Title"] = "Criar registros de Funcionários";
+    ViewData["Title"] = "Cadastrar Funcionários";
 }
 
+<div class="d-flex justify-content-center align-items-center" style="height: max-content;">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="modal-title fs-5">@ViewData["Title"]</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="Func_Nome" class="labels mb-2">Nome *</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Func_Nome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
+                        </div>
+                    </div>
 
-<div class="container">
-    <h1 class="titulo-view-crud" id="staticBackdropLabel">Cadastrar Funcionário</h1>
+                    <div class="form-group">
+                        <label asp-for="Func_Sobrenome" class="labels mb-2">Sobrenome *</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Func_Sobrenome" type="text" class="form-control conteudo-input" placeholder="Exemplo: dos Santos">
+                        </div>
+                    </div>
 
-    <form method="post" asp-action="AddFunc">
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Nome" class="labels mb-2">Nome *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Func_Nome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Maria">
+                    <div class="form-group">
+                        <label asp-for="Func_Gen" class="labels mb-2">Gênero</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Func_Gen" type="text" class="form-control conteudo-input" placeholder="Exemplo: Feminino">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Func_Dt_Adm" class="labels mb-2">Data Admissão *</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Func_Dt_Adm" type="date" class="form-control conteudo-input" placeholder="Exemplo: 2023/01/03">
+                            @*<span asp-validation-for="Func_Dt_Adm" class="text-danger"></span>*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Func_CH_Est" class="labels mb-2">Carga Horária *</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Func_CH_Est" type="number" class="form-control conteudo-input" placeholder="Exemplo: 8">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Depto_Id" class="labels mb-2">Departamento *</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Depto_Id" type="number" class="form-control conteudo-input" placeholder="Exemplo: 1">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso *</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="NAcesso_Id" type="number" class="form-control conteudo-input" placeholder="Exemplo: 3">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a asp-action="Index" class="btn botao-cancelar">Cancelar</a>
+                        <input type="submit" value="Salvar" class="btn botao-padrao"/>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Sobrenome" class="labels mb-2">Sobrenome *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Func_Sobrenome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
-            </div>
-        </div>
+    </div>
+</div>
 
         @*<div class="modal-body modal-cadastrar-func">
             <label class="labels mb-2">Data Nascimento *</label>
@@ -57,46 +106,3 @@
                 </div>
             </div>
         </div>*@
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Gen" class="labels mb-2">Gênero *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Func_Gen" type="text" class="form-control conteudo-input" placeholder="Exemplo: Feminino">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Dt_Adm" class="labels mb-2">Data Admissão *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Func_Dt_Adm" type="date" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
-                @*<span asp-validation-for="Func_Dt_Adm" class="text-danger"></span>*@
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_CH_Est" class="labels mb-2">Carga Horária *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Func_CH_Est" type="text" class="form-control conteudo-input" placeholder="Exemplo: 8">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Depto_Id" class="labels mb-2">Departamento *</label>
-            <div class="input-group mb-3">
-                <input asp-for="Depto_Id" type="text" class="form-control conteudo-input" placeholder="Exemplo: 1">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso *</label>
-            <div class="input-group mb-3">
-                <input asp-for="NAcesso_Id" type="text" class="form-control conteudo-input" placeholder="Exemplo: 3">
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <a asp-action="Index" class="btn botao-cancelar">Cancelar</a>
-            <button type="submit" class="btn botao-padrao">Salvar alterações</button>
-        </div>
-    </form>
-</div>

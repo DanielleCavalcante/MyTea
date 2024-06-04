@@ -5,71 +5,56 @@
 @model Funcionario
 
 @{
-    ViewData["Title"] = "Criar registros de Funcionários";
+    ViewData["Title"] = "Ver Mais";
 }
 
-<form method="post">
-    <div class="container">
-        <h1 class="titulo-view-crud" id="staticBackdropLabel">Ver Mais Funcionário</h1>
-        <div class="modal-body modal-cadastrar-func ">
-                <label asp-for="Func_Id" class="labels mb-2">Código:</label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Func_Id" type="text" class="form-control conteudo-input input-func">
+<div class="d-flex justify-content-center align-items-center" style="height: max-content;">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="modal-title fs-5">@ViewData["Title"]</h1>
             </div>
-        </div>
+            <div class="card-body"
+                <form method="post">
+                        <div class="form-group">
+                        <label asp-for="Func_Id" class="labels mb-2">Código:</label>
+                        <input readonly asp-for="Func_Id" type="text" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Func_Nome" class="labels mb-2">Nome:</label>
+                        <input readonly asp-for="Func_Nome" type="text" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Func_Sobrenome" class="labels mb-2">Sobrenome:</label>
+                        <input readonly asp-for="Func_Sobrenome" type="text" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Func_Gen" class="labels mb-2">Gênero:</label>
+                        <input readonly asp-for="Func_Gen" type="text" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Func_Dt_Adm" class="labels mb-2">Data de Admissão: </label>
+                        <input readonly asp-for="Func_Dt_Adm" type="date" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Func_CH_Est" class="labels mb-2">Carga Horária: </label>
+                        <input readonly asp-for="Func_CH_Est" type="text" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Depto_Id" class="labels mb-2">Id Departamento: </label>
+                        <input readonly asp-for="Depto_Id" type="text" class="form-control conteudo-input input-func">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso: </label>
+                        <input readonly asp-for="NAcesso_Id" type="text" class="form-control conteudo-input input-func">
+                    </div>
 
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Nome" class="labels mb-2">Nome:</label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Func_Nome" type="text" class="form-control conteudo-input input-func">
+                    <div class="modal-footer">
+                        <a asp-action="Index" class="btn botao-cancelar">Cancelar</a>
+                        @*<button asp-controller="Funcionario" asp-action="Index" type="submit" class="btn botao-cancelar">Cancelar</button>*@
+                    </div>
+                </form>
             </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Sobrenome" class="labels mb-2">Sobrenome:</label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Func_Sobrenome" type="text" class="form-control conteudo-input input-func">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Gen" class="labels mb-2">Gênero:</label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Func_Gen" type="text" class="form-control conteudo-input input-func">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_Dt_Adm" class="labels mb-2">Data de Admissão: </label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Func_Dt_Adm" type="date" class="form-control conteudo-input input-func">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_CH_Est" class="labels mb-2">Carga Horária: </label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Func_CH_Est" type="text" class="form-control conteudo-input input-func">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Depto_Id" class="labels mb-2">Id Departamento: </label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="Depto_Id" type="text" class="form-control conteudo-input input-func">
-            </div>
-        </div>
-
-        <div class="modal-body modal-cadastrar-func">
-            <label asp-for="NAcesso_Id" class="labels mb-2">Nível de Acesso: </label>
-            <div class="input-group mb-3">
-                <input readonly asp-for="NAcesso_Id" type="text" class="form-control conteudo-input input-func">
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <button asp-area="" asp-controller="Funcionario" asp-action="Index" type="submit" class="btn botao-cancelar">Cancelar</button>
         </div>
     </div>
-
-</form>
+</div>

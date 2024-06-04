@@ -65,9 +65,10 @@
 
                         @*Botão de Ver Mais*@
                         <td colspan="2">
-                            <form asp-action="VerMaisFunc" method="get">
+                            <form asp-action="VerMaisFunc" method="post">
                                 <input type="hidden" value="@item.Func_Id" name="id"/>
-                                <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                                <button type="submit" class="btn botao-padrao">Ver mais</button>
+                                @*<button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>*@
                             </form>
                         </td>
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
@@ -92,7 +93,7 @@
     </div>
 
     @* Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais *@
-    <div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
+    @*<div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -161,7 +162,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>*@
 
     
     @* Modal de exibição após pressionar o botão cadastrar novo funcionário *@

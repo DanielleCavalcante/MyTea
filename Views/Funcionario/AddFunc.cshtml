@@ -12,7 +12,7 @@
 <div class="container">
     <h1 class="titulo-view-crud" id="staticBackdropLabel">Cadastrar Funcionário</h1>
 
-    <form method="post">
+    <form method="post" asp-action="AddFunc">
         <div class="modal-body modal-cadastrar-func">
             <label asp-for="Func_Nome" class="labels mb-2">Nome *</label>
             <div class="input-group mb-3">
@@ -61,14 +61,15 @@
         <div class="modal-body modal-cadastrar-func">
             <label asp-for="Func_Gen" class="labels mb-2">Gênero *</label>
             <div class="input-group mb-3">
-                <input asp-for="Func_Gen" type="text" class="form-control conteudo-input" placeholder="Exemplo: Santos">
+                <input asp-for="Func_Gen" type="text" class="form-control conteudo-input" placeholder="Exemplo: Feminino">
             </div>
         </div>
 
         <div class="modal-body modal-cadastrar-func">
-            <label asp-for="Func_DtAdm" class="labels mb-2">Data Admissão *</label>
+            <label asp-for="Func_Dt_Adm" class="labels mb-2">Data Admissão *</label>
             <div class="input-group mb-3">
-                <input asp-for="Func_DtAdm" type="date" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
+                <input asp-for="Func_Dt_Adm" type="date" class="form-control conteudo-input" placeholder="Exemplo: 01/04/2023">
+                @*<span asp-validation-for="Func_Dt_Adm" class="text-danger"></span>*@
             </div>
         </div>
 
@@ -94,8 +95,8 @@
         </div>
 
         <div class="modal-footer">
-            <button asp-area="" asp-controller="Funcionario" asp-action="Index"  type="submit" class="btn botao-cancelar">Cancelar</button>
-            <button type="submit" value="Inserir" class="btn botao-padrao">Salvar</button>
+            <a asp-action="Index" class="btn botao-cancelar">Cancelar</a>
+            <button type="submit" class="btn botao-padrao">Salvar alterações</button>
         </div>
     </form>
 </div>

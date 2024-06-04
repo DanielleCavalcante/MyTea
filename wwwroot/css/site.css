@@ -232,10 +232,7 @@ td, tr {
 }
 
 .btn-close {
-    position: fixed;
-    right: 120px;
-    top: 50px;
-    cursor: pointer;
+    height: 10px;
 }
 
 /*Titulo Views CRUD*/

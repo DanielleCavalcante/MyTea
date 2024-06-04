@@ -65,9 +65,9 @@
 
                         @*Botão de Ver Mais - direcionará para o modal VerMais*@
                         <td colspan="2">
-                            <form method="post">
-                                <input type="hidden" value="@item.Func_Id" name="id" />
-                                <button asp-action="VerMaisFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                            <form asp-controller="Funcionario" asp-action="VerMaisFunc" method="get">
+                                <input type="hidden" name="id" value="@item.Func_Id" />
+                                <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
                             </form>
                         </td>
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
@@ -84,6 +84,76 @@
 
     @*colar aqui novamente se der errado*@ 
     @* Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais *@
+    <div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ver Mais Funcionário</h1>
+                    <button asp-action="Index" type="button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <form asp-action="VerMaisFunc" method="post">
+                    <div class="modal-body">
+                        <div class="modal-body modal-cadastrar-func ">
+                            <label class="labels mb-2">Código:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Id" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Nome:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Nome" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Sobrenome:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Sobrenome" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Gênero:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Gen" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Data de Admissão: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Dt_Adm" type="date" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Carga Horária: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_CH_Est" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Id Departamento: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Depto_Id" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Nível de Acesso: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="NAcesso_Id" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     
     @* Modal de exibição após pressionar o botão cadastrar novo funcionário *@
 

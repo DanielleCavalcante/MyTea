@@ -1,0 +1,84 @@
+﻿@model Departamento
+
+@{
+    ViewData["Title"] = "Criar Departamento";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="modal-title fs-5">Cadastrar Departamento</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="Depto_Nome"  class="labels mb-2 text-center">Nome do Departamento</label>
+                        <div class="input-group mb-3">
+                            <input asp-for="Depto_Nome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Criar Departamento" class="btn botao-padrao" />
+                    </div>
+                    <div class="text-center mt-3">
+                        <a asp-action="Index" class="btn botao-cancelar">Listar Departamentos</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <h5 class="text-center fw-bold">Adicionar novo Departamento</h5>
+                        <br />
+                        <label asp-for="Depto_Nome" class="fw-normal text-center">  Nome do Departamento</label>
+                        <br />
+                        <input asp-for="Depto_Nome" type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia" />
+                    </div>
+                    <br />
+                    <div class="form-group text-center">
+                        <input type="submit" value="Criar Departamento" class="btn botao-padrao" />
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <a asp-action="Index" class="btn botao-cancelar">Listar Departamentos</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+
+
+
+@*
+<div class="modal fade" id="botao-cadastrar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Departamento</h1>
+            </div>
+            <div class="modal-body">
+                <label class="labels mb-2">Nome Departamento</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn botao-padrao">Salvar alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
+*@

@@ -11,25 +11,33 @@
     <div class="container my-5 px-0">
         <div class="row">
             <div class="col-md-9 col-12">
+
+                @* Buscar Departamento -> id ou nome *@
                 <h3 class="my-2">Buscar Departamento</h3>
                 <p class="mb-4">Busque um departamento por seu nome ou código</p>
                 <div class="row mt-3">
                     <div class="input mb-3 col-4">
-                            <input type="text" class="form-control  conteudo-input" placeholder="Informe um nome ou código">
+                    <form method="post">
+                            <input name="Id" type="text" class="form-control  conteudo-input" placeholder="Informe um nome ou código">
+                    </form>
                     </div>
                     <div class="col-8">
                         <button type="button" class="btn botao-padrao">Buscar</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-12 d-flex justify-content-end">
+
+            @* Botão de Cadastrar Funcionário *@
+            <div class="col-md-3 col-8 d-flex justify-content-end">
                 <div class="col-8 my-3 ">
-                    <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-cadastrar-departamentos">Cadastrar Departamento</button>
+                    <form asp-controller="Departamento" asp-action="AddDepto" method="post">
+                        <button type="submit" class="btn botao-padrao">Cadastrar Departamento</button>
+                    </form>
                 </div>
             </div>
     </div>
 
-    @* Tabela para exibir dados do Departamento *@
+    @* Tabela para exibir dados de Departamentos *@
 
     <p class="mt-5 mb-2">Lista de Departamentos cadastrados:</p>
 
@@ -49,8 +57,20 @@
                         <td readonly>@item.Depto_Id</td>
                         <td>@item.Depto_Nome</td>
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                            <button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-departamentos">Editar</button>
-                            <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-departamentos">Excluir</button>
+
+                            @* botão de Editar Departamento *@
+                            <form asp-action="UpdateDepto" method="get">
+                                <input type="hidden" value="@item.Depto_Id" name="id"/>
+                                @*<button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-departamentos">Editar(Modal)</button>*@
+                                <button type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-departamentos">Editar</button>
+                            </form>
+                            @* Botão de Excluir Departamento*@
+                            <form asp-action="DeleteDepto" method="post">
+                                <input type="hidden" value="@item.Depto_Id" name="id"/>
+                                @*
+                                <button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-departamentos">Excluir (Modal)</button>*@
+                                <button type="submit" class="btn botao-excluir">Excluir</button>
+                            </form>
                         </td>
                     </tr>
                     }
@@ -64,13 +84,14 @@
     *@
 
     <div class="modal fade" id="botao-cadastrar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <form method="post">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Departamento</h1>
                 </div>
                 <div class="modal-body">
-                    <label class="labels mb-2">Nome Departamento</label>
+                    <label class="labels mb-2">Nome do Departamento</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
                     </div>
@@ -81,11 +102,12 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 
     @*
     FUNÇÃO EDITAR
-    Modal de exibição após pressionar 0 botão editar novo departamento
+    Modal de exibição após pressionar o botão editar novo departamento
     *@
 
     <div class="modal fade" id="botao-editar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -108,17 +130,17 @@
         </div>
     </div>
 
+    @*FUNÇÃO EXCLUIR
+    Modal de exibição após pressionar o botão excluir de novo departamento -> DEIXAR PARA DEPOIS*@
     @*
-
-    FUNÇÃO EXCLUIR
-    Modal de exibição após pressionar o botão excluir de novo departamento *@
-
     <div class="modal fade" id="botao-excluir-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Departamento</h1>
                 </div>
+                @foreach (Departamento registro in Model)
+                            {
                 <div class="modal-body">
                     <div class="alert alert-danger text-center fw-bold" role="alert">
                         Atenção!
@@ -132,18 +154,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Tecnologia</td>
-                            </tr>
+                            
+                                <tr>
+                                    <td>@registro.Depto_Id</td>
+                                    <td>@registro.Depto_Nome</td>
+                                </tr>
+                            
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
+                    <form asp-action="DeleteDepto" asp-route-idRegistro="@registro.Depto_Id" method="post">
+                        <button type="submit" class="btn botao-excluir">Confirmar e excluir</button>
+                    </form>
                 </div>
+                }
             </div>
         </div>
     </div>
 </div>
+*@

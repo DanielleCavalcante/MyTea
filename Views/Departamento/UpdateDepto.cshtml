@@ -1,0 +1,58 @@
+﻿@model Departamento
+
+@{
+    ViewData["Title"] = "Editar Departamento";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="modal-title fs-5">@ViewData["Title"]</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <input asp-for="Depto_Id" type="hidden" class="form-control" />
+                    </div>
+
+                        <div class="form-group">
+                        <label asp-for="Depto_Nome" class="labels mb-2 text-center">Nome do Departamento</label>
+                        <input asp-for="Depto_Nome" class="form-control conteudo-input" />
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <input type="submit" value="Atualizar" class="btn botao-padrao"/>
+                        <a asp-action="Index" class="btn botao-cancelar">Cancelar</a>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*
+    FUNÇÃO EDITAR MODAL
+    Modal de exibição após pressionar 0 botão editar novo departamento
+    *@
+
+<div class="modal fade" id="botao-editar-departamentos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Departamento</h1>
+            </div>
+            <div class="modal-body">
+                <label class="labels mb-2">Nome Departamento</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control conteudo-input" placeholder="Exemplo: Tecnologia">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn botao-padrao">Salvar alterações</button>
+            </div>
+        </div>
+    </div>
+</div>

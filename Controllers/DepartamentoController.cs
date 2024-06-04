@@ -52,7 +52,7 @@ namespace MyTea.Controllers
         // 3° CRUD: Inserção de dados - Create
         public ViewResult AddDepto() => View();
         [HttpPost]
-        public async Task<IActionResult> AddDeto(Departamento departamento)
+        public async Task<IActionResult> AddDepto(Departamento departamento)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +68,37 @@ namespace MyTea.Controllers
             }
             return View(departamento);
         }
+
+        // 3° CRUD: Inserção de dados - Create
+        /*
+         * Create + Validação se o nome do Departamento já existe
+        public ViewResult AddDepto() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> AddDepto(Departamento departamento)
+        {
+            if (ModelState.IsValid)
+            {
+                // Verificação se o nome do Departamento já existe
+                if (await _departamentoService.DeptoNomeExisteAsync(departamento.Depto_Nome))
+                {
+                    ModelState.AddModelError("Depto_Nome", "Já existe um departamento com este nome.");
+                }
+                else
+                {
+                    try
+                    {
+                        await _departamentoService.AddDeptoAsync(departamento);
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception)
+                    {
+                        ModelState.AddModelError("", "Erro ao criar o registro de Departamento");
+                    }
+                }
+            }
+            return View(departamento);
+        } */
 
         // 4° CRUD: Update
         public async Task<IActionResult> UpdateDepto(int id)

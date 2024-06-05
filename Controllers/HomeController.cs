@@ -15,7 +15,7 @@ namespace MyTea.Controllers
 
         public IActionResult Index()
         {
-           
+
             return View();
 
         }

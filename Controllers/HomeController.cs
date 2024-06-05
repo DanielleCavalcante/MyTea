@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MyTea.Models;
-using MyTea.Services;
 using System.Diagnostics;
 
 namespace MyTea.Controllers
@@ -14,31 +13,12 @@ namespace MyTea.Controllers
             _logger = logger;
         }
 
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
-           
+
             return View();
 
-        }*/
-
-        private LancamentoHorasService _lancamentoService;
-
-        public HomeController(LancamentoHorasService lancamentoService)
-        {
-            _lancamentoService = lancamentoService;
         }
-
-        //inicio========================================================================================================================
-        public async Task<IActionResult> Index()
-        {
-            var viewModel = new ViewModelListar
-            {
-                Funcionario = await _lancamentoService.Funcionario.()
-            };
-
-            return View(viewModel);
-        }
-        //fim==========================================================================================================================
 
         /*
         public IActionResult Index()

@@ -1,6 +1,4 @@
-﻿@model ViewModelListar
-
-@* Arquivo de css para a View Home*@
+﻿﻿@* Arquivo de css para a View Home*@
 @section Styles {
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
@@ -12,62 +10,54 @@
 
     @* @using (Html.BeginForm("CalcularHoras", "Home", FormMethod.Post))
     { *@
-    
+
     <form method="post">
 
         <div class="row">
 
-                <p class="col-md-8 col-12 d-flex justify-content-md-start justify-content-center mt-5" id="saudacao-usuario">Olá, Natália</p>
+            <p class="col-md-8 col-12 d-flex justify-content-md-start justify-content-center mt-5" id="saudacao-usuario">Olá, Natália</p>
 
-                @* Navegação entre quinzenas *@
-                <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
-                    <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-left"></i></button>
+            @* Navegação entre quinzenas *@
+            <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
+                <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-left"></i></button>
 
-                    <select id="seletorQuinzena" class="seletor-quinzena" onchange="mostrarDiv(this)">
-                        @*<option value="@data.Dt_Id">@data.Dt_Quinzena_DtFinal</option>*@
-                        <option value="1">01/04/24</option>
-                        <option value="2">15/04/24</option>
-                    </select>
+                <select id="seletorQuinzena" class="seletor-quinzena" onchange="mostrarDiv(this)">
+                    <option value="1">01/04/24</option>
+                    <option value="2">15/04/24</option>
+                </select>
 
-                    
-                    <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-right"></i></button>
+                <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-right"></i></button>
 
-                </div>
+            </div>
 
-            <script>
-                function submitForm() {
-                    document.getElementById('Quinzena').submit();
-                }
-            </script>
+            <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
+                <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
+            </div>
 
-                <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
-                    <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
-                </div>
-
-                @* As divs que serão exibidas ou ocultadas com base na seleção *@
-                <div id="div1" style="display:none;">Valor selecionado: <span id="valorDiv1"></span></div>
-                <div id="div2" style="display:none;">Valor selecionado: <span id="valorDiv2"></span></div>
+            @* As divs que serão exibidas ou ocultadas com base na seleção *@
+            <div id="div1" style="display:none;">Valor selecionado: <span id="valorDiv1"></span></div>
+            <div id="div2" style="display:none;">Valor selecionado: <span id="valorDiv2"></span></div>
 
         </div>
 
-        
-        @* Condicional para exibição de alerta de carga horária quinzenal não cumprida 
+
+        @* Condicional para exibição de alerta de carga horária quinzenal não cumprida
         @if (Model.MensagemErroHorasQuinz)
-            {
-                <div class="alert alert-danger mt-5" role="alert">
-                    <p>Não foi possível enviar o seu relatório de horas!</p>
-                    <p>Você não cumpriu a carga horária proposta na quinzena</p>
-                </div>
-            }
+        {
+        <div class="alert alert-danger mt-5" role="alert">
+        <p>Não foi possível enviar o seu relatório de horas!</p>
+        <p>Você não cumpriu a carga horária proposta na quinzena</p>
+        </div>
+        }
         *@
-        @* Condicional para exibição de alerta de carga horária diária não cumprida 
+        @* Condicional para exibição de alerta de carga horária diária não cumprida
         @if (Model.MensagemErroHorasDia)
-            {
-                <div class="alert alert-danger mt-5" role="alert">
-                    <p>Não foi possível enviar o seu relatório de horas!</p>
-                    <p>Você não cumpriu a carga horária diária</p>
-                </div>
-            }
+        {
+        <div class="alert alert-danger mt-5" role="alert">
+        <p>Não foi possível enviar o seu relatório de horas!</p>
+        <p>Você não cumpriu a carga horária diária</p>
+        </div>
+        }
         *@
         @* Tabela de preenchimento de horas *@
         <div class="table-responsive" id="tabela-home">
@@ -142,35 +132,35 @@
 
                     @* Primeira linha da tabela *@
                     <tr>
-                         <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectUm">
-                                @{                                   
-                                    var seletorUmVisivel = false;
-                                }
+                        <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectUm">
+                            @{
+                                var seletorUmVisivel = false;
+                            }
 
-                                <select id="seletorLinhaUm" class="seletor-wbs" style="display: @(seletorUmVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma WBS</option>
-                                    <option value="opcao1">Opção 1</option>
-                                    <option value="opcao2">Opção 2</option>                                    
-                                </select>                                
+                            <select id="seletorLinhaUm" class="seletor-wbs" style="display: @(seletorUmVisivel ? "block" : "none");">
+                                <option value="">Selecione uma WBS</option>
+                                <option value="opcao1">Opção 1</option>
+                                <option value="opcao2">Opção 2</option>
+                            </select>
                         </th>
-                        
-                          <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> </td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                        @*                        
+
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> </td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        @*
                         <td class="m-0 text-center"></td>
                         <td class="m-0 text-center"> <input type="text" asp-for="Dia_Um" name="valor1" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"> <input type="text" asp-for="Dia_Dois" name="valor2" class="form-control input-horas" /></td>
@@ -188,214 +178,214 @@
                         <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="text" class="form-control input-horas" /></td>
                         <td class="m-0 text-center"></td>
                         *@
-                       
+
                     </tr>
 
                     @* Segunda linha da tabela *@
                     <tr>
-                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectDois">
-                                @{                                    
-                                    var seletorDoisVisivel = false;
-                                }
+                        <th scope="row" colspan="6" class="linha-seletor" id="mostrarSelectDois">
+                            @{
+                                var seletorDoisVisivel = false;
+                            }
 
-                                <select id="seletorLinhaDois" class="seletor-wbs" style="display: @(seletorDoisVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma WBS</option>
-                                    <option value="opcao1">Opção 1</option>
-                                    <option value="opcao2">Opção 2</option>                                    
-                                </select>
-                            </th>
+                            <select id="seletorLinhaDois" class="seletor-wbs" style="display: @(seletorDoisVisivel ? "block" : "none");">
+                                <option value="">Selecione uma WBS</option>
+                                <option value="opcao1">Opção 1</option>
+                                <option value="opcao2">Opção 2</option>
+                            </select>
+                        </th>
 
-                         
 
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text"  class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> </td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input  type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                        </tr>
+
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> </td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                    </tr>
 
                     @* Terceira linha da tabela *@
                     <tr>
 
-                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorTres">
-                                @{
-                                    var seletorTresVisivel = false;
-                                }
+                        <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorTres">
+                            @{
+                                var seletorTresVisivel = false;
+                            }
 
-                                <select id="seletorLinhaTres" class="seletor-wbs" style="display: @(seletorTresVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma WBS</option>
-                                    <option value="opcao1">Opção 1</option>
-                                    <option value="opcao2">Opção 2</option>
-                                </select>
-                            </th>
+                            <select id="seletorLinhaTres" class="seletor-wbs" style="display: @(seletorTresVisivel ? "block" : "none");">
+                                <option value="">Selecione uma WBS</option>
+                                <option value="opcao1">Opção 1</option>
+                                <option value="opcao2">Opção 2</option>
+                            </select>
+                        </th>
 
 
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> </td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                        </tr>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> </td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                    </tr>
 
                     @* Quarta linha da tabela *@
                     <tr>
 
-                            <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorQuatro">
-                                @{
-                                    var seletorQuatroVisivel = false;
-                                }
+                        <th scope="row" colspan="6" class="linha-seletor" id="mostrarSeletorQuatro">
+                            @{
+                                var seletorQuatroVisivel = false;
+                            }
 
-                                <select id="seletorLinhaQuatro" class="seletor-wbs" style="display: @(seletorQuatroVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma WBS</option>
-                                    <option value="opcao1">Opção 1</option>
-                                    <option value="opcao2">Opção 2</option>
-                                </select>
-                            </th>
+                            <select id="seletorLinhaQuatro" class="seletor-wbs" style="display: @(seletorQuatroVisivel ? "block" : "none");">
+                                <option value="">Selecione uma WBS</option>
+                                <option value="opcao1">Opção 1</option>
+                                <option value="opcao2">Opção 2</option>
+                            </select>
+                        </th>
 
 
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> </td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                        </tr>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> </td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                    </tr>
 
                     @*Quinta linha da tabela *@
                     <tr>
-                            <th scope="row" colspan="6" id="mostrarSeletorCinco" class="linha-seletor">
-                                @{
-                                    var seletorCincoVisivel = false;
-                                }
+                        <th scope="row" colspan="6" id="mostrarSeletorCinco" class="linha-seletor">
+                            @{
+                                var seletorCincoVisivel = false;
+                            }
 
-                                <select id="seletorLinhaCinco" class="seletor-wbs" style="display: @(seletorCincoVisivel ? "block" : "none");">
-                                    <option value="">Selecione uma WBS</option>
-                                    <option value="opcao1">Opção 1</option>
-                                    <option value="opcao2">Opção 2</option>
-                                </select>
-                            </th>
+                            <select id="seletorLinhaCinco" class="seletor-wbs" style="display: @(seletorCincoVisivel ? "block" : "none");">
+                                <option value="">Selecione uma WBS</option>
+                                <option value="opcao1">Opção 1</option>
+                                <option value="opcao2">Opção 2</option>
+                            </select>
+                        </th>
 
 
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> </td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
-                            <td class="m-0 text-center"></td>
-                        </tr>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> </td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input type="text" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                    </tr>
 
                     @* Condicional para exibição de linha adicional na Tabela *@
                     <div>
                         @*
-                            @if (Model.LinhaAdicionalTabela)
-                            {
-                                <div>
-                            <tr>
-                                <th scope="row" colspan="6" class="linha-seletor">
-                                    <p>
-                                        <select class="seletor-wbs">
-                                            <option value="WBS0911009">WBS0911009 - Férias</option>
-                                            <option value="WBS0911008">WBS0911008 - Day-off</option>
-                                            <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
-                                            <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
-                                        </select>
-                                    </p>
-                                </th>
+                        @if (Model.LinhaAdicionalTabela)
+                        {
+                        <div>
+                        <tr>
+                        <th scope="row" colspan="6" class="linha-seletor">
+                        <p>
+                        <select class="seletor-wbs">
+                        <option value="WBS0911009">WBS0911009 - Férias</option>
+                        <option value="WBS0911008">WBS0911008 - Day-off</option>
+                        <option value="WBS0911007">WBS0911007 - Sem tarefa</option>
+                        <option value="WBS0911006">WBS0911006 - Implementação e desenvolvimento</option>
+                        </select>
+                        </p>
+                        </th>
 
 
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"> </td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Cinco" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Seis" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Sete" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Oito" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Nove" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="number" class="form-control input-horas" /></td>
-                                <td class="m-0 text-center"></td>
-                            </tr>
-                            </div>
-                            }
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Dois" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Tres" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> </td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Quatro" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Cinco" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Seis" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Sete" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Oito" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Nove" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Dez" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"> <input asp-for="Dia_Onze" type="number" class="form-control input-horas" /></td>
+                        <td class="m-0 text-center"></td>
+                        </tr>
+                        </div>
+                        }
                         *@
-                    </div>                   
+                    </div>
 
                     @* Condicional para exibição de linha de feriado na Tabela *@
                     <div>
                         @*
-                            @if (Model.Feriado)
-                            {
-                                <div>
-                            <tr>
-                                <th scope="row" colspan="6">
-                                    Feriado
-                                </th>
-                                <td class="m-0 text-center">8</td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center"></td>
-                                <td class="m-0 text-center">8</td>
-                            </tr>
-                            </div>
-                            }    
+                        @if (Model.Feriado)
+                        {
+                        <div>
+                        <tr>
+                        <th scope="row" colspan="6">
+                        Feriado
+                        </th>
+                        <td class="m-0 text-center">8</td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center"></td>
+                        <td class="m-0 text-center">8</td>
+                        </tr>
+                        </div>
+                        }
                         *@
                     </div>
 
@@ -425,9 +415,9 @@
             </table>
         </div>
     </form>
- 
+
     @* } *@
-    
+
 </div>
 
 @* Scripts de ação de click na linha da tabela para a exibição do seletor de wbs *@
@@ -502,13 +492,13 @@
         });
 
         document.getElementById('seletorLinhaCinco').addEventListener('change', function () {
-            if (this.value) {                
+            if (this.value) {
                 // Faça algo quando uma opção for selecionada
                 alert('Você selecionou: ' + this.value);
             }
         });
     </script>
-   
+
     @* Script para exibir a informação correspondente a quinzena selecionada *@
     <script>
         function mostrarDiv(select) {
@@ -540,5 +530,3 @@
 
      </select>
 *@
-
-

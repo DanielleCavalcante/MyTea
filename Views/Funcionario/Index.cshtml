@@ -8,32 +8,34 @@
     ViewData["Title"] = "Funcionários";
 }
 
-@* Botão de busca do funcionário *@
 <div class="container my-5 px-0">
     <div class="row">
         <div class="col-md-9 col-12">
             <h3 class="my-2">Buscar Funcionário</h3>
             <p class="mb-4">Busque um funcionário por seu nome ou código</p>
+            @* Botão de busca do funcionário *@
             <form method="post">
                 <div class="row mt-3">
                     <div class="input mb-3 col-4">
-                        <input for="Func_Id" name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome ou código">
+                        <input for="Func_Id" name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome, código ou departamento">
                     </div>
+
                     <div class="col-8">
                         <button asp-controller="Funcionario" asp-action="BuscarFunc" type="submit" class="btn botao-padrao">Buscar</button>
                     </div>
                 </div>
             </form>
-
         </div>
 
+        @*Botão de cadastrar*@
         <div class="col-md-3 col-8 d-flex justify-content-end">
             <div class="col-8 my-3 ">
-                <form asp-controller="Funcionario" asp-action="CriarFunc" method="post">
+                <form asp-controller="Funcionario" asp-action="AddFunc" method="post">
                     <button type="submit" class="btn botao-padrao">Cadastrar Funcionário</button>
                 </form>
             </div>
         </div>
+
     </div>
 
     @* Tabela para exibir dados do Funcionário *@
@@ -53,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var item in Model)
+                @foreach (var item in Model)
                 {
                     <tr>
                         <th scope="row" readonly>@item.Func_Id</th>
@@ -61,21 +63,27 @@
                         <td>@item.Func_Sobrenome</td>
                         <td>@item.Depto_Id</td>
 
-                        @*Botão de Ver Mais - direcionará para o modal VerMais*@
+                        @*Botão de Ver Mais*@
                         <td colspan="2">
-                            <form method="post">
+                            <form asp-action="VerMaisFunc" method="post">
                                 <input type="hidden" value="@item.Func_Id" name="id" />
-                                <button asp-action="VerMaisFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>
+                                <button type="submit" class="btn botao-padrao">Ver mais</button>
+                                @*<button type="button" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-ver-mais">Ver mais</button>*@
                             </form>
                         </td>
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
-                            <form method="post">
-                                <input type="hidden" name="id" />
-                                <button asp-action="EditarFunc" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
-                            </form>
-                            <form asp-action="ExcluirFunc" method="post">
+                            @*Botão de Editar*@
+                            <form asp-action="UpdateFunc" method="get">
                                 <input type="hidden" value="@item.Func_Id" name="id" />
-                                <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
+                                <button type="submit" class="btn botao-padrao">Editar</button>
+                                @*<a asp-action="UpdateFunc" asp-route-id="@item.Func_Id" class="btn botao-padrao" data-bs-target="#botao-editar-funcionarios">Editar</a>*@
+                            </form>
+
+                            @*Botão de Excluir*@
+                            <form asp-action="DeleteFunc" method="post">
+                                <input type="hidden" value="@item.Func_Id" name="id" />
+                                @*<button type="button" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>*@
+                                <button type="submit" class="btn botao-excluir" >Excluir</button>
                             </form>
                         </td>
                     </tr>
@@ -84,22 +92,92 @@
         </table>
     </div>
 
-    @*colar aqui novamente se der errado*@ 
     @* Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais *@
-    
+    @*<div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ver Mais Funcionário</h1>
+                    <button asp-action="Index" type="button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form asp-action="VerMaisFunc" method="post">
+                    <div class="modal-body">
+                        <div class="modal-body modal-cadastrar-func ">
+                            <label class="labels mb-2">Código:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Id" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Nome:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Nome" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Sobrenome:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Sobrenome" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Gênero:</label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Gen" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Data de Admissão: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_Dt_Adm" type="date" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Carga Horária: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Func_CH_Est" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Id Departamento: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="Depto_Id" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+
+                        <div class="modal-body modal-cadastrar-func">
+                            <label class="labels mb-2">Nível de Acesso: </label>
+                            <div class="input-group mb-3">
+                                <input readonly name="NAcesso_Id" type="text" class="form-control conteudo-input input-func">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div*@
+
+
     @* Modal de exibição após pressionar o botão cadastrar novo funcionário *@
 
     @* Modal de exibição após pressionar botão editar funcionário *@
-   
+
     @* Modal de exibição após pressionar o botão excluir funcionário *@
 
-    <div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    @*<div class="modal fade" id="botao-excluir-funcionarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-                <div class="modal-content">
-                    <form asp-action="ExcluirFunc" method="post">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Funcionário</h1>
+            <div class="modal-content">
+                <div class="modal-header">
+                    </tr>
                 </div>
+                <form asp-action="ExcluirFunc" method="post">
                     <div class="modal-body">
                         <div class="alert alert-danger text-center fw-bold" role="alert">
                             Atenção!
@@ -146,14 +224,14 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn botao-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn botao-excluir">Confirmar e excluir</button>
+                        <button type="submit" class="btn botao-excluir">Confirmar e excluir</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>

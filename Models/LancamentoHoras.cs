@@ -6,7 +6,7 @@ namespace MyTea.Models
     {
         public int LHora_Id { get; set; }
 
-        public DateTime Dt_Id { get; set; }
+        public DateOnly Dt_Id { get; set; }
        
         public int Func_Id { get; set; }
 

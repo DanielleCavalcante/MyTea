@@ -2,15 +2,16 @@
 
 @model MyTea.Models.Funcionario
                     
-@* Modal de exibição de informações cadastradas sobre o usuário, após pressionar o botão Ver mais *@
-<div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-<div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header mb-3">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ver mais</h1>
-                    @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
-                </div>
-                <form asp-action="CriarFunc" method="post">
+<div class="modal fade" id="botao-ver-mais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="verMaisModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Ver Mais Funcionário</h1>
+                <button asp-action="Index" type="button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form asp-action="VerMaisFunc" method="post">
+                <div class="modal-body">
                     <div class="modal-body modal-cadastrar-func ">
                         <label class="labels mb-2">Código:</label>
                         <div class="input-group mb-3">
@@ -21,7 +22,7 @@
                     <div class="modal-body modal-cadastrar-func">
                         <label class="labels mb-2">Nome:</label>
                         <div class="input-group mb-3">
-                            <input readonly nome="Func_Nome" type="text" class="form-control conteudo-input input-func">
+                            <input readonly name="Func_Nome" type="text" class="form-control conteudo-input input-func">
                         </div>
                     </div>
 
@@ -42,35 +43,32 @@
                     <div class="modal-body modal-cadastrar-func">
                         <label class="labels mb-2">Data de Admissão: </label>
                         <div class="input-group mb-3">
-                            <input readonly name="Func_Gen" type="date" class="form-control conteudo-input input-func">
+                            <input readonly name="Func_Dt_Adm" type="date" class="form-control conteudo-input input-func">
                         </div>
                     </div>
 
                     <div class="modal-body modal-cadastrar-func">
                         <label class="labels mb-2">Carga Horária: </label>
                         <div class="input-group mb-3">
-                            <input readonly name="Func_Gen" type="text" class="form-control conteudo-input input-func">
+                            <input readonly name="Func_CH_Est" type="text" class="form-control conteudo-input input-func">
                         </div>
                     </div>
 
                     <div class="modal-body modal-cadastrar-func">
-                        <label class="labels mb-2">Departamento: </label>
+                        <label class="labels mb-2">Id Departamento: </label>
                         <div class="input-group mb-3">
-                            <input readonly name="Func_Gen" type="text" class="form-control conteudo-input input-func">
+                            <input readonly name="Depto_Id" type="text" class="form-control conteudo-input input-func">
                         </div>
                     </div>
 
                     <div class="modal-body modal-cadastrar-func">
-                        <label name="Func_Gen" class="labels mb-2">Nível de Acesso: </label>
+                        <label class="labels mb-2">Nível de Acesso: </label>
                         <div class="input-group mb-3">
-                            <input readonly name="Func_Gen" type="text" class="form-control conteudo-input input-func">
+                            <input readonly name="NAcesso_Id" type="text" class="form-control conteudo-input input-func">
                         </div>
                     </div>
-
-                    <div class="modal-footer">
-                        <button asp-area="" asp-controller="Funcionario" asp-action="Index" type="submit" class="btn botao-cancelar">Cancelar</button>
-                    </div>]
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
-    </div> 
+    </div>
+</div>

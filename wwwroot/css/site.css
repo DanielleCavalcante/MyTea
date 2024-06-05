@@ -151,7 +151,8 @@ p{
 .conteudo-input {
     font-size: 12px;
     border-radius: 20px;
-    height: 40px;    
+    height: 40px;   
+    color: var(--cinza-escuro);
 }
 
 /* Estilos globais para as tabelas */
@@ -205,11 +206,18 @@ td, tr {
         outline:none;
     }
 
-
-
 /* Painel Admin - Cadastrar Funcionário */
 .modal-cadastrar-func {
     padding: 0 20px 0 20px;
+}
+
+.modal-title {
+    color: var(--primaria);
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-bottom: 5px;
 }
 
 /*tabelas*/
@@ -229,6 +237,10 @@ td, tr {
     font-size: 12px;
     border-radius: 20px;
     color: var(--cinza);
+}
+
+.btn-close {
+    height: 10px;
 }
 
 /*Titulo Views CRUD*/

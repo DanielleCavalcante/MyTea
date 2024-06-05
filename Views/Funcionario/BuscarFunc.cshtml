@@ -45,9 +45,9 @@
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
                             <form method="post">
                                 <input type="hidden" name="id" />
-                                <button asp-action="EditarFunc" asp-route-id="@Model.Func_Id" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
+                                <button asp-action="UpdateFunc" asp-route-id="@Model.Func_Id" type="submit" class="btn botao-padrao" data-bs-toggle="modal" data-bs-target="#botao-editar-funcionarios">Editar</button>
                             </form>
-                            <form asp-action="ExcluirFunc" method="post">
+                            <form asp-action="DeleteFunc" method="post">
                                 <input type="hidden" value="@Model.Func_Id" name="id" />
                                 <button type="submit" class="btn botao-excluir" data-bs-toggle="modal" data-bs-target="#botao-excluir-funcionarios">Excluir</button>
                             </form>

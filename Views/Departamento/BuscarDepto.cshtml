@@ -1,0 +1,51 @@
+﻿@*
+    estabelecer a comunicação entre model e view
+*@
+
+@model Departamento
+
+@{
+    ViewData["Title"] = "Resultados da Busca:";
+}
+<form method="post">
+    <div class="container">
+        <button asp-area="" asp-controller="Departamento" asp-action="Index" type="submit" class="btn-close" aria-label="Close"></button>
+        <p class="mt-5 mb-2">Resultados da busca: </p
+
+        @if (Model != null)
+        {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="cabeçalho-tabela">
+                    <tr>
+                        <th>Código</th>
+                        <th>Departamento</th>
+                        <th scope="col" colspan="2"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row" readonly>@Model.Depto_Id</th>
+                        <td>@Model.Depto_Nome</td>
+                        <td colspan="2" class="d-flex justify-content-end hstack gap-2">
+
+                            @* botão de Editar Departamento *@
+                            <form method="post">
+                                <input type="hidden" name="id" value="@Model.Depto_Id" />
+                                <button asp-action="UpdateDepto" type="submit" class="btn botao-padrao">Editar</button>
+                            </form>
+                            @* Botão de Excluir Departamento*@
+                            <form method="post">
+                                <input type="hidden" value="@Model.Depto_Id" name="id"/>
+                                <button asp-action="DeleteDepto" type="submit" class="btn botao-excluir">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+        }
+        </>
+    </div>
+</form>

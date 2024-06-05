@@ -49,6 +49,23 @@ namespace MyTea.Controllers
             return View(departamento);
         }
 
+        // CRUD READ - BUSCA POR REGISTRO UNICO
+        public ViewResult BuscarDepto() => View();
+
+        //sobrecarga do método
+        [HttpPost]
+        public async Task<IActionResult> BuscarDepto(int id)
+        {
+            // requisição com uso do service
+            var departamento = await _departamentoService.GetDeptoByIdAsync(id);
+            if (departamento == null)
+            {
+                return NotFound();
+            }
+
+            return View(departamento);
+        }
+
         // 3° CRUD: Inserção de dados - Create
         public ViewResult AddDepto() => View();
         [HttpPost]

@@ -1,4 +1,6 @@
-﻿@* Arquivo de css para a View Home*@
+﻿@model ViewModelListar
+
+@* Arquivo de css para a View Home*@
 @section Styles {
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
@@ -22,13 +24,21 @@
                     <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-left"></i></button>
 
                     <select id="seletorQuinzena" class="seletor-quinzena" onchange="mostrarDiv(this)">
+                        @*<option value="@data.Dt_Id">@data.Dt_Quinzena_DtFinal</option>*@
                         <option value="1">01/04/24</option>
                         <option value="2">15/04/24</option>
                     </select>
+
                     
                     <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-right"></i></button>
 
                 </div>
+
+            <script>
+                function submitForm() {
+                    document.getElementById('Quinzena').submit();
+                }
+            </script>
 
                 <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
                     <button class="btn botao-padrao" type="submit">Enviar Relatório</button>

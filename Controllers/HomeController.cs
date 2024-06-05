@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MyTea.Models;
-using MyTea.Services;
 using System.Diagnostics;
 
 namespace MyTea.Controllers
@@ -14,12 +13,12 @@ namespace MyTea.Controllers
             _logger = logger;
         }
 
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
-           
+
             return View();
 
-        }*/
+        }
 
         /*
         public IActionResult Index()

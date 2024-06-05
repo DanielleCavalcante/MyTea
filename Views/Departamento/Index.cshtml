@@ -15,16 +15,17 @@
                 @* Buscar Departamento -> id ou nome *@
                 <h3 class="my-2">Buscar Departamento</h3>
                 <p class="mb-4">Busque um departamento por seu nome ou código</p>
-                <div class="row mt-3">
-                    <div class="input mb-3 col-4">
-                    <form method="post">
-                            <input name="Id" type="text" class="form-control  conteudo-input" placeholder="Informe um nome ou código">
-                    </form>
+                <form method="post">
+                    <div class="row mt-3">
+                        <div class="input mb-3 col-4">
+                            <input name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome de departamento ou código">
+                        </div>
+
+                        <div class="col-8">
+                            <button asp-controller="Departamento" asp-action="BuscarDepto" type="submit" class="btn botao-padrao">Buscar</button>
+                        </div>
                     </div>
-                    <div class="col-8">
-                        <button type="button" class="btn botao-padrao">Buscar</button>
-                    </div>
-                </div>
+                </form>
             </div>
 
             @* Botão de Cadastrar Funcionário *@

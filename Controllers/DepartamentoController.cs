@@ -149,7 +149,7 @@ namespace MyTea.Controllers
         public async Task<IActionResult> DeleteDepto(int id)
         {
             var departamento = await _departamentoService.GetDeptoByIdAsync(id);
-            
+
             if (departamento == null)
                 return NotFound();
 

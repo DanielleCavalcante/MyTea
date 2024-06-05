@@ -18,7 +18,7 @@
                 <form method="post">
                     <div class="row mt-3">
                         <div class="input mb-3 col-4">
-                            <input name="id" type="text" class="form-control conteudo-input" placeholder="Informe um nome de departamento ou código">
+                            <input for="Depto_Id" name="id" type="text" class="form-control conteudo-input" placeholder="Informe um código ou nome de departamento">
                         </div>
 
                         <div class="col-8">
@@ -52,6 +52,7 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
                     @foreach (var item in Model)
                     {
                     <tr>

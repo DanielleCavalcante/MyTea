@@ -31,7 +31,7 @@
                         <td colspan="2" class="d-flex justify-content-end hstack gap-2">
 
                             @* botão de Editar Departamento *@
-                            <form method="post">
+                            <form method="get">
                                 <input type="hidden" name="id" value="@Model.Depto_Id" />
                                 <button asp-action="UpdateDepto" type="submit" class="btn botao-padrao">Editar</button>
                             </form>

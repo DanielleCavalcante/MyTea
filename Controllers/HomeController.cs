@@ -21,25 +21,6 @@ namespace MyTea.Controllers
 
         }*/
 
-        private LancamentoHorasService _lancamentoService;
-
-        public HomeController(LancamentoHorasService lancamentoService)
-        {
-            _lancamentoService = lancamentoService;
-        }
-
-        //inicio========================================================================================================================
-        public async Task<IActionResult> Index()
-        {
-            var viewModel = new ViewModelListar
-            {
-                Funcionario = await _lancamentoService.Funcionario.()
-            };
-
-            return View(viewModel);
-        }
-        //fim==========================================================================================================================
-
         /*
         public IActionResult Index()
         {

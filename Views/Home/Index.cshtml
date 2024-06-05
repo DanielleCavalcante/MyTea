@@ -1,4 +1,4 @@
-﻿@model ViewModelListar
+﻿@model HomeViewModel
 
 @* Arquivo de css para a View Home*@
 @section Styles {
@@ -33,12 +33,6 @@
                     <button class="btn navegacao-calendario"><i class="icone-calendario fa-solid fa-caret-right"></i></button>
 
                 </div>
-
-            <script>
-                function submitForm() {
-                    document.getElementById('Quinzena').submit();
-                }
-            </script>
 
                 <div class="col-md-2 col-12 d-flex justify-content-md-end justify-content-center mt-5">
                     <button class="btn botao-padrao" type="submit">Enviar Relatório</button>
@@ -150,7 +144,7 @@
                                 <select id="seletorLinhaUm" class="seletor-wbs" style="display: @(seletorUmVisivel ? "block" : "none");">
                                     <option value="">Selecione uma WBS</option>
                                     <option value="opcao1">Opção 1</option>
-                                    <option value="opcao2">Opção 2</option>                                    
+                                    <option value="opcao2">Opção 2</option>                                   
                                 </select>                                
                         </th>
                         

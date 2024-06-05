@@ -1,0 +1,54 @@
+﻿@model WBS
+
+@{
+    ViewData["Title"] = "Editar WBS";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="modal-title fs-5">@ViewData["Title"]</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <input asp-for="WBS_Id" type="hidden" class="form-control" />
+                    </div>
+
+                    @*Código WBS*@
+                    <div class="form-group">
+                        <label asp-for="WBS_Codigo" class="labels mb-2 text-center">Código WBS</label>
+                        <input asp-for="WBS_Codigo" class="form-control conteudo-input" placeholder="Exemplo: A301929" />
+                    </div>
+                    <br />
+                    @*Descrição WBS*@
+                    <div class="form-group">
+                        <label asp-for="WBS_Descricao" class="labels mb-2 text-center">Descrição da WBS</label>
+                        <input asp-for="WBS_Descricao" type="text" class="form-control conteudo-input" placeholder="Exemplo: Treinamento" />
+                    </div>
+                    <br />
+                    @* Chargeability? *@
+                    <div class="form-group">
+                        <label class="labels mb-2 text-center">Chargeability</label>
+                        <div class="input-group mb-3">
+                            <div class="form-check">
+                                <input asp-for="WBS_Chargeability" class="form-check-input" type="radio" name="WBS_Chargeability" value="true" />
+                                <label class="form-check-label">Sim</label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="WBS_Chargeability" class="form-check-input" type="radio" name="WBS_Chargeability" value="false" />
+                                <label class="form-check-label">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group text-center">
+                        <input type="submit" value="Atualizar" class="btn botao-padrao" />
+                        <a asp-action="Index" class="btn botao-cancelar">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

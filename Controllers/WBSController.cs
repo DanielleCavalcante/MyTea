@@ -7,8 +7,8 @@ namespace MyTea.Controllers
     public class WBSController : Controller
     {
         private WBSService _wbsService;
-    
-        public WBSController(WBSService wbsService) 
+
+        public WBSController(WBSService wbsService)
         {
             _wbsService = wbsService;
         }
@@ -22,7 +22,7 @@ namespace MyTea.Controllers
                 var listaWBS = await _wbsService.GetWBSAsync();
                 return View(listaWBS);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, "Não foi possível acessar os dados de WBS. Tente novamente.");
                 return View(new List<WBS>());
@@ -33,11 +33,11 @@ namespace MyTea.Controllers
         public ViewResult GetWBSUnico() => View();
 
         [HttpPost]
-        public async Task<IActionResult> GetWBSUnico(int id) 
-        { 
+        public async Task<IActionResult> GetWBSUnico(int id)
+        {
             var wbs = await _wbsService.GetWBSByIdAsync(id);
 
-            if(wbs == null) 
+            if (wbs == null)
             {
                 return NotFound();
             }
@@ -49,16 +49,16 @@ namespace MyTea.Controllers
         public ViewResult AddWBS() => View();
 
         [HttpPost]
-        public async Task<IActionResult> AddWBS(WBS wbs) 
+        public async Task<IActionResult> AddWBS(WBS wbs)
         {
-            if(ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                try 
+                try
                 {
                     await _wbsService.AddWBSAsync(wbs);
                     return RedirectToAction(nameof(Index));
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     ModelState.AddModelError(string.Empty, "Erro ao criar o registro de WBS.");
                 }
